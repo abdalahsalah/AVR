@@ -9,7 +9,8 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include MCAL/DIO/subdir.mk
--include APP/WEEK1/subdir.mk
+-include APP/WEEK1/snake/subdir.mk
+-include APP/WEEK1/blank/subdir.mk
 -include subdir.mk
 -include objects.mk
 
