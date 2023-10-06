@@ -1,0 +1,1 @@
+APP/WEEK2/TASK1/main.o APP/WEEK2/TASK1/main.o: ../APP/WEEK2/TASK1/main.c
