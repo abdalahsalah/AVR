@@ -20,7 +20,7 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-APP/WEEK1/blank \
+APP/WEEK1/led \
 APP/WEEK1/snake \
 APP/WEEK2/TASK1 \
 APP/WEEK2/TASK2 \

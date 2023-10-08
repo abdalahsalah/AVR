@@ -12,7 +12,7 @@ RM := rm -rf
 -include APP/WEEK2/TASK2/subdir.mk
 -include APP/WEEK2/TASK1/subdir.mk
 -include APP/WEEK1/snake/subdir.mk
--include APP/WEEK1/blank/subdir.mk
+-include APP/WEEK1/led/subdir.mk
 -include subdir.mk
 -include objects.mk
 
