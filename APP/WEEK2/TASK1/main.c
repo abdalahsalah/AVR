@@ -1,10 +1,10 @@
-/*
- * main.c
-
- *
- *  Created on: ???/???/????
- *      Author: user
- */
+///*
+// * main.c
+//
+// *
+// *  Created on: ???/???/????
+// *      Author: user
+// */
 #include "../../../lib/std_types.h"
 #include "../../../MCAL/DIO/DIO_interface.h"
 #include "../../../MCAL/DIO/DIO_register.h"
@@ -47,7 +47,6 @@ void main() {
 		}
 
 	}
-
 
 }
 

@@ -1,11 +1,11 @@
-///*
-// * main.c
-//
-// *
-// *  Created on: ???/???/????
-// *      Author: user
-// */
-//
+/////*
+//// * main.c
+////
+//// *
+//// *  Created on: ???/???/????
+//// *      Author: user
+//// */
+////
 #include "../../../lib/std_types.h"
 #include "../../../MCAL/DIO/DIO_interface.h"
 #include <util/delay.h>
