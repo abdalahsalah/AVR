@@ -24,5 +24,7 @@ APP/WEEK1/led \
 APP/WEEK1/snake \
 APP/WEEK2/TASK1 \
 APP/WEEK2/TASK2 \
+Hall/LED \
+Hall/SWITCH \
 MCAL/DIO \
 

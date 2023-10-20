@@ -1,6 +1,7 @@
 /*
  * main.c
 
+
  *
  *  Created on: ???/???/????
  *      Author: user
@@ -49,6 +50,7 @@ int main() {
 
 	while(1)
 	{
+
 		pinstate=GET_BIT(PINB,DIO_u8PIN0);
 
 		if(pinstate==0)
