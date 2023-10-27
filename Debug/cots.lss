@@ -3,33 +3,33 @@ cots.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         0000183c  00000000  00000000  00000094  2**1
+  0 .text         00001ae8  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         0000001a  00800060  0000183c  000018d0  2**0
+  1 .data         00000012  00800060  00001ae8  00001b7c  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000001  0080007a  0080007a  000018ea  2**0
+  2 .bss          00000001  00800072  00800072  00001b8e  2**0
                   ALLOC
-  3 .stab         00001584  00000000  00000000  000018ec  2**2
+  3 .stab         00001914  00000000  00000000  00001b90  2**2
                   CONTENTS, READONLY, DEBUGGING
-  4 .stabstr      00000d4d  00000000  00000000  00002e70  2**0
+  4 .stabstr      00000e22  00000000  00000000  000034a4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_aranges 00000140  00000000  00000000  00003bbd  2**0
+  5 .debug_aranges 00000140  00000000  00000000  000042c6  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_pubnames 00000170  00000000  00000000  00003cfd  2**0
+  6 .debug_pubnames 00000170  00000000  00000000  00004406  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_info   00001c49  00000000  00000000  00003e6d  2**0
+  7 .debug_info   00001c49  00000000  00000000  00004576  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_abbrev 00000eeb  00000000  00000000  00005ab6  2**0
+  8 .debug_abbrev 00000eeb  00000000  00000000  000061bf  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_line   00000dad  00000000  00000000  000069a1  2**0
+  9 .debug_line   00000dad  00000000  00000000  000070aa  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_frame  00000160  00000000  00000000  00007750  2**2
+ 10 .debug_frame  00000160  00000000  00000000  00007e58  2**2
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_str    0000028d  00000000  00000000  000078b0  2**0
+ 11 .debug_str    0000028d  00000000  00000000  00007fb8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_loc    000007ce  00000000  00000000  00007b3d  2**0
+ 12 .debug_loc    000007ce  00000000  00000000  00008245  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_ranges 00000050  00000000  00000000  0000830b  2**0
+ 13 .debug_ranges 00000050  00000000  00000000  00008a13  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -69,8 +69,8 @@ Disassembly of section .text:
       60:	10 e0       	ldi	r17, 0x00	; 0
       62:	a0 e6       	ldi	r26, 0x60	; 96
       64:	b0 e0       	ldi	r27, 0x00	; 0
-      66:	ec e3       	ldi	r30, 0x3C	; 60
-      68:	f8 e1       	ldi	r31, 0x18	; 24
+      66:	e8 ee       	ldi	r30, 0xE8	; 232
+      68:	fa e1       	ldi	r31, 0x1A	; 26
       6a:	02 c0       	rjmp	.+4      	; 0x70 <.do_copy_data_start>
 
 0000006c <.do_copy_data_loop>:
@@ -78,13 +78,13 @@ Disassembly of section .text:
       6e:	0d 92       	st	X+, r0
 
 00000070 <.do_copy_data_start>:
-      70:	aa 37       	cpi	r26, 0x7A	; 122
+      70:	a2 37       	cpi	r26, 0x72	; 114
       72:	b1 07       	cpc	r27, r17
       74:	d9 f7       	brne	.-10     	; 0x6c <.do_copy_data_loop>
 
 00000076 <__do_clear_bss>:
       76:	10 e0       	ldi	r17, 0x00	; 0
-      78:	aa e7       	ldi	r26, 0x7A	; 122
+      78:	a2 e7       	ldi	r26, 0x72	; 114
       7a:	b0 e0       	ldi	r27, 0x00	; 0
       7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
 
@@ -92,11 +92,11 @@ Disassembly of section .text:
       7e:	1d 92       	st	X+, r1
 
 00000080 <.do_clear_bss_start>:
-      80:	ab 37       	cpi	r26, 0x7B	; 123
+      80:	a3 37       	cpi	r26, 0x73	; 115
       82:	b1 07       	cpc	r27, r17
       84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
-      86:	0e 94 2c 0b 	call	0x1658	; 0x1658 <main>
-      8a:	0c 94 1c 0c 	jmp	0x1838	; 0x1838 <_exit>
+      86:	0e 94 32 0d 	call	0x1a64	; 0x1a64 <main>
+      8a:	0c 94 72 0d 	jmp	0x1ae4	; 0x1ae4 <_exit>
 
 0000008e <__bad_interrupt>:
       8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -148,7 +148,7 @@ Disassembly of section .text:
       ec:	b0 e0       	ldi	r27, 0x00	; 0
       ee:	eb e7       	ldi	r30, 0x7B	; 123
       f0:	f0 e0       	ldi	r31, 0x00	; 0
-      f2:	0c 94 e5 0b 	jmp	0x17ca	; 0x17ca <__prologue_saves__>
+      f2:	0c 94 3b 0d 	jmp	0x1a76	; 0x1a76 <__prologue_saves__>
       f6:	dc 01       	movw	r26, r24
       f8:	2b 01       	movw	r4, r22
       fa:	fa 01       	movw	r30, r20
@@ -473,14 +473,14 @@ Disassembly of section .text:
      378:	cd b7       	in	r28, 0x3d	; 61
      37a:	de b7       	in	r29, 0x3e	; 62
      37c:	e2 e1       	ldi	r30, 0x12	; 18
-     37e:	0c 94 01 0c 	jmp	0x1802	; 0x1802 <__epilogue_restores__>
+     37e:	0c 94 57 0d 	jmp	0x1aae	; 0x1aae <__epilogue_restores__>
 
 00000382 <__subsf3>:
      382:	a0 e2       	ldi	r26, 0x20	; 32
      384:	b0 e0       	ldi	r27, 0x00	; 0
      386:	e7 ec       	ldi	r30, 0xC7	; 199
      388:	f1 e0       	ldi	r31, 0x01	; 1
-     38a:	0c 94 f1 0b 	jmp	0x17e2	; 0x17e2 <__prologue_saves__+0x18>
+     38a:	0c 94 47 0d 	jmp	0x1a8e	; 0x1a8e <__prologue_saves__+0x18>
      38e:	69 83       	std	Y+1, r22	; 0x01
      390:	7a 83       	std	Y+2, r23	; 0x02
      392:	8b 83       	std	Y+3, r24	; 0x03
@@ -518,14 +518,14 @@ Disassembly of section .text:
      3d8:	0e 94 fd 03 	call	0x7fa	; 0x7fa <__pack_f>
      3dc:	a0 96       	adiw	r28, 0x20	; 32
      3de:	e6 e0       	ldi	r30, 0x06	; 6
-     3e0:	0c 94 0d 0c 	jmp	0x181a	; 0x181a <__epilogue_restores__+0x18>
+     3e0:	0c 94 63 0d 	jmp	0x1ac6	; 0x1ac6 <__epilogue_restores__+0x18>
 
 000003e4 <__addsf3>:
      3e4:	a0 e2       	ldi	r26, 0x20	; 32
      3e6:	b0 e0       	ldi	r27, 0x00	; 0
      3e8:	e8 ef       	ldi	r30, 0xF8	; 248
      3ea:	f1 e0       	ldi	r31, 0x01	; 1
-     3ec:	0c 94 f1 0b 	jmp	0x17e2	; 0x17e2 <__prologue_saves__+0x18>
+     3ec:	0c 94 47 0d 	jmp	0x1a8e	; 0x1a8e <__prologue_saves__+0x18>
      3f0:	69 83       	std	Y+1, r22	; 0x01
      3f2:	7a 83       	std	Y+2, r23	; 0x02
      3f4:	8b 83       	std	Y+3, r24	; 0x03
@@ -559,14 +559,14 @@ Disassembly of section .text:
      432:	0e 94 fd 03 	call	0x7fa	; 0x7fa <__pack_f>
      436:	a0 96       	adiw	r28, 0x20	; 32
      438:	e6 e0       	ldi	r30, 0x06	; 6
-     43a:	0c 94 0d 0c 	jmp	0x181a	; 0x181a <__epilogue_restores__+0x18>
+     43a:	0c 94 63 0d 	jmp	0x1ac6	; 0x1ac6 <__epilogue_restores__+0x18>
 
 0000043e <__mulsf3>:
      43e:	a0 e2       	ldi	r26, 0x20	; 32
      440:	b0 e0       	ldi	r27, 0x00	; 0
      442:	e5 e2       	ldi	r30, 0x25	; 37
      444:	f2 e0       	ldi	r31, 0x02	; 2
-     446:	0c 94 e5 0b 	jmp	0x17ca	; 0x17ca <__prologue_saves__>
+     446:	0c 94 3b 0d 	jmp	0x1a76	; 0x1a76 <__prologue_saves__>
      44a:	69 83       	std	Y+1, r22	; 0x01
      44c:	7a 83       	std	Y+2, r23	; 0x02
      44e:	8b 83       	std	Y+3, r24	; 0x03
@@ -806,14 +806,14 @@ Disassembly of section .text:
      626:	0e 94 fd 03 	call	0x7fa	; 0x7fa <__pack_f>
      62a:	a0 96       	adiw	r28, 0x20	; 32
      62c:	e2 e1       	ldi	r30, 0x12	; 18
-     62e:	0c 94 01 0c 	jmp	0x1802	; 0x1802 <__epilogue_restores__>
+     62e:	0c 94 57 0d 	jmp	0x1aae	; 0x1aae <__epilogue_restores__>
 
 00000632 <__gtsf2>:
      632:	a8 e1       	ldi	r26, 0x18	; 24
      634:	b0 e0       	ldi	r27, 0x00	; 0
      636:	ef e1       	ldi	r30, 0x1F	; 31
      638:	f3 e0       	ldi	r31, 0x03	; 3
-     63a:	0c 94 f1 0b 	jmp	0x17e2	; 0x17e2 <__prologue_saves__+0x18>
+     63a:	0c 94 47 0d 	jmp	0x1a8e	; 0x1a8e <__prologue_saves__+0x18>
      63e:	69 83       	std	Y+1, r22	; 0x01
      640:	7a 83       	std	Y+2, r23	; 0x02
      642:	8b 83       	std	Y+3, r24	; 0x03
@@ -851,14 +851,14 @@ Disassembly of section .text:
      688:	8f ef       	ldi	r24, 0xFF	; 255
      68a:	68 96       	adiw	r28, 0x18	; 24
      68c:	e6 e0       	ldi	r30, 0x06	; 6
-     68e:	0c 94 0d 0c 	jmp	0x181a	; 0x181a <__epilogue_restores__+0x18>
+     68e:	0c 94 63 0d 	jmp	0x1ac6	; 0x1ac6 <__epilogue_restores__+0x18>
 
 00000692 <__gesf2>:
      692:	a8 e1       	ldi	r26, 0x18	; 24
      694:	b0 e0       	ldi	r27, 0x00	; 0
      696:	ef e4       	ldi	r30, 0x4F	; 79
      698:	f3 e0       	ldi	r31, 0x03	; 3
-     69a:	0c 94 f1 0b 	jmp	0x17e2	; 0x17e2 <__prologue_saves__+0x18>
+     69a:	0c 94 47 0d 	jmp	0x1a8e	; 0x1a8e <__prologue_saves__+0x18>
      69e:	69 83       	std	Y+1, r22	; 0x01
      6a0:	7a 83       	std	Y+2, r23	; 0x02
      6a2:	8b 83       	std	Y+3, r24	; 0x03
@@ -896,14 +896,14 @@ Disassembly of section .text:
      6e8:	8f ef       	ldi	r24, 0xFF	; 255
      6ea:	68 96       	adiw	r28, 0x18	; 24
      6ec:	e6 e0       	ldi	r30, 0x06	; 6
-     6ee:	0c 94 0d 0c 	jmp	0x181a	; 0x181a <__epilogue_restores__+0x18>
+     6ee:	0c 94 63 0d 	jmp	0x1ac6	; 0x1ac6 <__epilogue_restores__+0x18>
 
 000006f2 <__ltsf2>:
      6f2:	a8 e1       	ldi	r26, 0x18	; 24
      6f4:	b0 e0       	ldi	r27, 0x00	; 0
      6f6:	ef e7       	ldi	r30, 0x7F	; 127
      6f8:	f3 e0       	ldi	r31, 0x03	; 3
-     6fa:	0c 94 f1 0b 	jmp	0x17e2	; 0x17e2 <__prologue_saves__+0x18>
+     6fa:	0c 94 47 0d 	jmp	0x1a8e	; 0x1a8e <__prologue_saves__+0x18>
      6fe:	69 83       	std	Y+1, r22	; 0x01
      700:	7a 83       	std	Y+2, r23	; 0x02
      702:	8b 83       	std	Y+3, r24	; 0x03
@@ -941,14 +941,14 @@ Disassembly of section .text:
      748:	81 e0       	ldi	r24, 0x01	; 1
      74a:	68 96       	adiw	r28, 0x18	; 24
      74c:	e6 e0       	ldi	r30, 0x06	; 6
-     74e:	0c 94 0d 0c 	jmp	0x181a	; 0x181a <__epilogue_restores__+0x18>
+     74e:	0c 94 63 0d 	jmp	0x1ac6	; 0x1ac6 <__epilogue_restores__+0x18>
 
 00000752 <__fixsfsi>:
      752:	ac e0       	ldi	r26, 0x0C	; 12
      754:	b0 e0       	ldi	r27, 0x00	; 0
      756:	ef ea       	ldi	r30, 0xAF	; 175
      758:	f3 e0       	ldi	r31, 0x03	; 3
-     75a:	0c 94 f5 0b 	jmp	0x17ea	; 0x17ea <__prologue_saves__+0x20>
+     75a:	0c 94 4b 0d 	jmp	0x1a96	; 0x1a96 <__prologue_saves__+0x20>
      75e:	69 83       	std	Y+1, r22	; 0x01
      760:	7a 83       	std	Y+2, r23	; 0x02
      762:	8b 83       	std	Y+3, r24	; 0x03
@@ -1024,7 +1024,7 @@ Disassembly of section .text:
      7f0:	ca 01       	movw	r24, r20
      7f2:	2c 96       	adiw	r28, 0x0c	; 12
      7f4:	e2 e0       	ldi	r30, 0x02	; 2
-     7f6:	0c 94 11 0c 	jmp	0x1822	; 0x1822 <__epilogue_restores__+0x20>
+     7f6:	0c 94 67 0d 	jmp	0x1ace	; 0x1ace <__epilogue_restores__+0x20>
 
 000007fa <__pack_f>:
      7fa:	df 92       	push	r13
@@ -3163,302 +3163,760 @@ u8 LED_u8TurnOffLED(const LED_T *LED) {
     1654:	df 91       	pop	r29
     1656:	08 95       	ret
 
-00001658 <main>:
-#include "../../../Hall/LED/LED_interface.h"
-#include "../../../Hall/SWITCH/SWITCH_interface.h"
-#include "../../../lib/BIT_MATH.h"
-#include <util/delay.h>
-
-void main() {
+00001658 <_7SEGMENT_u8ShowNumber>:
+* @param _7SEGMENT Pointer to the _7SEGMENT_T structure.
+* @param copy_u8number The number to be displayed (0-9).
+* @return Status indicating success (0) or failure (1).
+*/
+u8 _7SEGMENT_u8ShowNumber(const _7SEGMENT_T  *_7SEGMENT, const u8 copy_u8number)
+{
     1658:	df 93       	push	r29
     165a:	cf 93       	push	r28
     165c:	cd b7       	in	r28, 0x3d	; 61
     165e:	de b7       	in	r29, 0x3e	; 62
-    1660:	6e 97       	sbiw	r28, 0x1e	; 30
+    1660:	2b 97       	sbiw	r28, 0x0b	; 11
     1662:	0f b6       	in	r0, 0x3f	; 63
     1664:	f8 94       	cli
     1666:	de bf       	out	0x3e, r29	; 62
     1668:	0f be       	out	0x3f, r0	; 63
     166a:	cd bf       	out	0x3d, r28	; 61
-
-	LED_T LED[2]={
-			{DIO_u8PORTA,DIO_u8PIN0,LED_u8SourceConnection},
-			{DIO_u8PORTA,DIO_u8PIN1,LED_u8SourceConnection}
-	};
-    166c:	ce 01       	movw	r24, r28
-    166e:	03 96       	adiw	r24, 0x03	; 3
-    1670:	9e 8b       	std	Y+22, r25	; 0x16
-    1672:	8d 8b       	std	Y+21, r24	; 0x15
-    1674:	e4 e7       	ldi	r30, 0x74	; 116
-    1676:	f0 e0       	ldi	r31, 0x00	; 0
-    1678:	f8 8f       	std	Y+24, r31	; 0x18
-    167a:	ef 8b       	std	Y+23, r30	; 0x17
-    167c:	f6 e0       	ldi	r31, 0x06	; 6
-    167e:	f9 8f       	std	Y+25, r31	; 0x19
-    1680:	ef 89       	ldd	r30, Y+23	; 0x17
-    1682:	f8 8d       	ldd	r31, Y+24	; 0x18
-    1684:	00 80       	ld	r0, Z
-    1686:	8f 89       	ldd	r24, Y+23	; 0x17
-    1688:	98 8d       	ldd	r25, Y+24	; 0x18
-    168a:	01 96       	adiw	r24, 0x01	; 1
-    168c:	98 8f       	std	Y+24, r25	; 0x18
-    168e:	8f 8b       	std	Y+23, r24	; 0x17
-    1690:	ed 89       	ldd	r30, Y+21	; 0x15
-    1692:	fe 89       	ldd	r31, Y+22	; 0x16
-    1694:	00 82       	st	Z, r0
-    1696:	8d 89       	ldd	r24, Y+21	; 0x15
-    1698:	9e 89       	ldd	r25, Y+22	; 0x16
-    169a:	01 96       	adiw	r24, 0x01	; 1
-    169c:	9e 8b       	std	Y+22, r25	; 0x16
-    169e:	8d 8b       	std	Y+21, r24	; 0x15
-    16a0:	99 8d       	ldd	r25, Y+25	; 0x19
-    16a2:	91 50       	subi	r25, 0x01	; 1
-    16a4:	99 8f       	std	Y+25, r25	; 0x19
-    16a6:	e9 8d       	ldd	r30, Y+25	; 0x19
-    16a8:	ee 23       	and	r30, r30
-    16aa:	51 f7       	brne	.-44     	; 0x1680 <main+0x28>
-
-	for(u8 i=0;i<2;i++)
-    16ac:	1a 82       	std	Y+2, r1	; 0x02
-    16ae:	11 c0       	rjmp	.+34     	; 0x16d2 <main+0x7a>
+    166c:	9c 83       	std	Y+4, r25	; 0x04
+    166e:	8b 83       	std	Y+3, r24	; 0x03
+    1670:	6d 83       	std	Y+5, r22	; 0x05
+	u8 local_u8error = 0;
+    1672:	1a 82       	std	Y+2, r1	; 0x02
+	s8 i = 0;
+    1674:	19 82       	std	Y+1, r1	; 0x01
+	if ((_7SEGMENT != NULL) && (_7SEGMENT->_7SEGMENT_u8port <= DIO_u8PORTD) && (_7SEGMENT->_7SEGMENT_u8enablepin < DIO_u8PIN7) && (_7SEGMENT->_7SEGMENT_u8enableport <= DIO_u8PORTD) && (_7SEGMENT->_7SEGMENT_u8commontype < 2) && (copy_u8number < 10)  )
+    1676:	8b 81       	ldd	r24, Y+3	; 0x03
+    1678:	9c 81       	ldd	r25, Y+4	; 0x04
+    167a:	00 97       	sbiw	r24, 0x00	; 0
+    167c:	09 f4       	brne	.+2      	; 0x1680 <_7SEGMENT_u8ShowNumber+0x28>
+    167e:	13 c1       	rjmp	.+550    	; 0x18a6 <_7SEGMENT_u8ShowNumber+0x24e>
+    1680:	eb 81       	ldd	r30, Y+3	; 0x03
+    1682:	fc 81       	ldd	r31, Y+4	; 0x04
+    1684:	80 81       	ld	r24, Z
+    1686:	84 30       	cpi	r24, 0x04	; 4
+    1688:	08 f0       	brcs	.+2      	; 0x168c <_7SEGMENT_u8ShowNumber+0x34>
+    168a:	0d c1       	rjmp	.+538    	; 0x18a6 <_7SEGMENT_u8ShowNumber+0x24e>
+    168c:	eb 81       	ldd	r30, Y+3	; 0x03
+    168e:	fc 81       	ldd	r31, Y+4	; 0x04
+    1690:	82 81       	ldd	r24, Z+2	; 0x02
+    1692:	87 30       	cpi	r24, 0x07	; 7
+    1694:	08 f0       	brcs	.+2      	; 0x1698 <_7SEGMENT_u8ShowNumber+0x40>
+    1696:	07 c1       	rjmp	.+526    	; 0x18a6 <_7SEGMENT_u8ShowNumber+0x24e>
+    1698:	eb 81       	ldd	r30, Y+3	; 0x03
+    169a:	fc 81       	ldd	r31, Y+4	; 0x04
+    169c:	81 81       	ldd	r24, Z+1	; 0x01
+    169e:	84 30       	cpi	r24, 0x04	; 4
+    16a0:	08 f0       	brcs	.+2      	; 0x16a4 <_7SEGMENT_u8ShowNumber+0x4c>
+    16a2:	01 c1       	rjmp	.+514    	; 0x18a6 <_7SEGMENT_u8ShowNumber+0x24e>
+    16a4:	eb 81       	ldd	r30, Y+3	; 0x03
+    16a6:	fc 81       	ldd	r31, Y+4	; 0x04
+    16a8:	83 81       	ldd	r24, Z+3	; 0x03
+    16aa:	82 30       	cpi	r24, 0x02	; 2
+    16ac:	08 f0       	brcs	.+2      	; 0x16b0 <_7SEGMENT_u8ShowNumber+0x58>
+    16ae:	fb c0       	rjmp	.+502    	; 0x18a6 <_7SEGMENT_u8ShowNumber+0x24e>
+    16b0:	8d 81       	ldd	r24, Y+5	; 0x05
+    16b2:	8a 30       	cpi	r24, 0x0A	; 10
+    16b4:	08 f0       	brcs	.+2      	; 0x16b8 <_7SEGMENT_u8ShowNumber+0x60>
+    16b6:	f7 c0       	rjmp	.+494    	; 0x18a6 <_7SEGMENT_u8ShowNumber+0x24e>
 	{
-		LED_u8Initialize(&LED[i]);
-    16b0:	8a 81       	ldd	r24, Y+2	; 0x02
-    16b2:	28 2f       	mov	r18, r24
-    16b4:	30 e0       	ldi	r19, 0x00	; 0
-    16b6:	c9 01       	movw	r24, r18
-    16b8:	88 0f       	add	r24, r24
-    16ba:	99 1f       	adc	r25, r25
-    16bc:	28 0f       	add	r18, r24
-    16be:	39 1f       	adc	r19, r25
-    16c0:	ce 01       	movw	r24, r28
-    16c2:	03 96       	adiw	r24, 0x03	; 3
-    16c4:	82 0f       	add	r24, r18
-    16c6:	93 1f       	adc	r25, r19
-    16c8:	0e 94 47 0a 	call	0x148e	; 0x148e <LED_u8Initialize>
-	LED_T LED[2]={
-			{DIO_u8PORTA,DIO_u8PIN0,LED_u8SourceConnection},
-			{DIO_u8PORTA,DIO_u8PIN1,LED_u8SourceConnection}
-	};
 
-	for(u8 i=0;i<2;i++)
-    16cc:	8a 81       	ldd	r24, Y+2	; 0x02
-    16ce:	8f 5f       	subi	r24, 0xFF	; 255
-    16d0:	8a 83       	std	Y+2, r24	; 0x02
-    16d2:	8a 81       	ldd	r24, Y+2	; 0x02
-    16d4:	82 30       	cpi	r24, 0x02	; 2
-    16d6:	60 f3       	brcs	.-40     	; 0x16b0 <main+0x58>
+		switch (_7SEGMENT->_7SEGMENT_u8Decoders)
+    16b8:	eb 81       	ldd	r30, Y+3	; 0x03
+    16ba:	fc 81       	ldd	r31, Y+4	; 0x04
+    16bc:	84 81       	ldd	r24, Z+4	; 0x04
+    16be:	28 2f       	mov	r18, r24
+    16c0:	30 e0       	ldi	r19, 0x00	; 0
+    16c2:	3b 87       	std	Y+11, r19	; 0x0b
+    16c4:	2a 87       	std	Y+10, r18	; 0x0a
+    16c6:	4a 85       	ldd	r20, Y+10	; 0x0a
+    16c8:	5b 85       	ldd	r21, Y+11	; 0x0b
+    16ca:	41 15       	cp	r20, r1
+    16cc:	51 05       	cpc	r21, r1
+    16ce:	09 f4       	brne	.+2      	; 0x16d2 <_7SEGMENT_u8ShowNumber+0x7a>
+    16d0:	a2 c0       	rjmp	.+324    	; 0x1816 <_7SEGMENT_u8ShowNumber+0x1be>
+    16d2:	8a 85       	ldd	r24, Y+10	; 0x0a
+    16d4:	9b 85       	ldd	r25, Y+11	; 0x0b
+    16d6:	81 30       	cpi	r24, 0x01	; 1
+    16d8:	91 05       	cpc	r25, r1
+    16da:	09 f0       	breq	.+2      	; 0x16de <_7SEGMENT_u8ShowNumber+0x86>
+    16dc:	e1 c0       	rjmp	.+450    	; 0x18a0 <_7SEGMENT_u8ShowNumber+0x248>
+		{
+			case _7SEGMENT_u8Decoder:
+			if ((_7SEGMENT->_7SEGMENT_u8Decoderstartpin < 5))
+    16de:	eb 81       	ldd	r30, Y+3	; 0x03
+    16e0:	fc 81       	ldd	r31, Y+4	; 0x04
+    16e2:	85 81       	ldd	r24, Z+5	; 0x05
+    16e4:	85 30       	cpi	r24, 0x05	; 5
+    16e6:	08 f0       	brcs	.+2      	; 0x16ea <_7SEGMENT_u8ShowNumber+0x92>
+    16e8:	93 c0       	rjmp	.+294    	; 0x1810 <_7SEGMENT_u8ShowNumber+0x1b8>
+			{
+				switch (_7SEGMENT->_7SEGMENT_u8commontype)
+    16ea:	eb 81       	ldd	r30, Y+3	; 0x03
+    16ec:	fc 81       	ldd	r31, Y+4	; 0x04
+    16ee:	83 81       	ldd	r24, Z+3	; 0x03
+    16f0:	28 2f       	mov	r18, r24
+    16f2:	30 e0       	ldi	r19, 0x00	; 0
+    16f4:	39 87       	std	Y+9, r19	; 0x09
+    16f6:	28 87       	std	Y+8, r18	; 0x08
+    16f8:	48 85       	ldd	r20, Y+8	; 0x08
+    16fa:	59 85       	ldd	r21, Y+9	; 0x09
+    16fc:	41 15       	cp	r20, r1
+    16fe:	51 05       	cpc	r21, r1
+    1700:	09 f4       	brne	.+2      	; 0x1704 <_7SEGMENT_u8ShowNumber+0xac>
+    1702:	46 c0       	rjmp	.+140    	; 0x1790 <_7SEGMENT_u8ShowNumber+0x138>
+    1704:	88 85       	ldd	r24, Y+8	; 0x08
+    1706:	99 85       	ldd	r25, Y+9	; 0x09
+    1708:	81 30       	cpi	r24, 0x01	; 1
+    170a:	91 05       	cpc	r25, r1
+    170c:	09 f0       	breq	.+2      	; 0x1710 <_7SEGMENT_u8ShowNumber+0xb8>
+    170e:	cd c0       	rjmp	.+410    	; 0x18aa <_7SEGMENT_u8ShowNumber+0x252>
+				{
+					case _7SEGMENT_u8COMMONCATHODE:
+					DIO_SetPinValue(_7SEGMENT->_7SEGMENT_u8enableport, _7SEGMENT->_7SEGMENT_u8enablepin, DIO_u8PIN_LOW);
+    1710:	eb 81       	ldd	r30, Y+3	; 0x03
+    1712:	fc 81       	ldd	r31, Y+4	; 0x04
+    1714:	81 81       	ldd	r24, Z+1	; 0x01
+    1716:	eb 81       	ldd	r30, Y+3	; 0x03
+    1718:	fc 81       	ldd	r31, Y+4	; 0x04
+    171a:	92 81       	ldd	r25, Z+2	; 0x02
+    171c:	69 2f       	mov	r22, r25
+    171e:	40 e0       	ldi	r20, 0x00	; 0
+    1720:	0e 94 fd 06 	call	0xdfa	; 0xdfa <DIO_SetPinValue>
+					for (i=0;i<4;i++)
+    1724:	19 82       	std	Y+1, r1	; 0x01
+    1726:	30 c0       	rjmp	.+96     	; 0x1788 <_7SEGMENT_u8ShowNumber+0x130>
+					{
+						if ((copy_u8number & (1 <<i)))
+    1728:	8d 81       	ldd	r24, Y+5	; 0x05
+    172a:	28 2f       	mov	r18, r24
+    172c:	30 e0       	ldi	r19, 0x00	; 0
+    172e:	89 81       	ldd	r24, Y+1	; 0x01
+    1730:	99 27       	eor	r25, r25
+    1732:	87 fd       	sbrc	r24, 7
+    1734:	90 95       	com	r25
+    1736:	a9 01       	movw	r20, r18
+    1738:	02 c0       	rjmp	.+4      	; 0x173e <_7SEGMENT_u8ShowNumber+0xe6>
+    173a:	55 95       	asr	r21
+    173c:	47 95       	ror	r20
+    173e:	8a 95       	dec	r24
+    1740:	e2 f7       	brpl	.-8      	; 0x173a <_7SEGMENT_u8ShowNumber+0xe2>
+    1742:	ca 01       	movw	r24, r20
+    1744:	81 70       	andi	r24, 0x01	; 1
+    1746:	90 70       	andi	r25, 0x00	; 0
+    1748:	88 23       	and	r24, r24
+    174a:	71 f0       	breq	.+28     	; 0x1768 <_7SEGMENT_u8ShowNumber+0x110>
+						{
+							DIO_SetPinValue(_7SEGMENT->_7SEGMENT_u8port, ((_7SEGMENT->_7SEGMENT_u8Decoderstartpin) + i), DIO_u8PIN_HIGH);
+    174c:	eb 81       	ldd	r30, Y+3	; 0x03
+    174e:	fc 81       	ldd	r31, Y+4	; 0x04
+    1750:	20 81       	ld	r18, Z
+    1752:	eb 81       	ldd	r30, Y+3	; 0x03
+    1754:	fc 81       	ldd	r31, Y+4	; 0x04
+    1756:	95 81       	ldd	r25, Z+5	; 0x05
+    1758:	89 81       	ldd	r24, Y+1	; 0x01
+    175a:	98 0f       	add	r25, r24
+    175c:	82 2f       	mov	r24, r18
+    175e:	69 2f       	mov	r22, r25
+    1760:	41 e0       	ldi	r20, 0x01	; 1
+    1762:	0e 94 fd 06 	call	0xdfa	; 0xdfa <DIO_SetPinValue>
+    1766:	0d c0       	rjmp	.+26     	; 0x1782 <_7SEGMENT_u8ShowNumber+0x12a>
+						}
+						else
+						{
+							DIO_SetPinValue(_7SEGMENT->_7SEGMENT_u8port, ((_7SEGMENT->_7SEGMENT_u8Decoderstartpin) + i), DIO_u8PIN_LOW);
+    1768:	eb 81       	ldd	r30, Y+3	; 0x03
+    176a:	fc 81       	ldd	r31, Y+4	; 0x04
+    176c:	20 81       	ld	r18, Z
+    176e:	eb 81       	ldd	r30, Y+3	; 0x03
+    1770:	fc 81       	ldd	r31, Y+4	; 0x04
+    1772:	95 81       	ldd	r25, Z+5	; 0x05
+    1774:	89 81       	ldd	r24, Y+1	; 0x01
+    1776:	98 0f       	add	r25, r24
+    1778:	82 2f       	mov	r24, r18
+    177a:	69 2f       	mov	r22, r25
+    177c:	40 e0       	ldi	r20, 0x00	; 0
+    177e:	0e 94 fd 06 	call	0xdfa	; 0xdfa <DIO_SetPinValue>
+			{
+				switch (_7SEGMENT->_7SEGMENT_u8commontype)
+				{
+					case _7SEGMENT_u8COMMONCATHODE:
+					DIO_SetPinValue(_7SEGMENT->_7SEGMENT_u8enableport, _7SEGMENT->_7SEGMENT_u8enablepin, DIO_u8PIN_LOW);
+					for (i=0;i<4;i++)
+    1782:	89 81       	ldd	r24, Y+1	; 0x01
+    1784:	8f 5f       	subi	r24, 0xFF	; 255
+    1786:	89 83       	std	Y+1, r24	; 0x01
+    1788:	89 81       	ldd	r24, Y+1	; 0x01
+    178a:	84 30       	cpi	r24, 0x04	; 4
+    178c:	6c f2       	brlt	.-102    	; 0x1728 <_7SEGMENT_u8ShowNumber+0xd0>
+    178e:	8d c0       	rjmp	.+282    	; 0x18aa <_7SEGMENT_u8ShowNumber+0x252>
+						}
+					}
+					break;
+					case _7SEGMENT_u8COMMONANODE:
 
-	SWITCH_T SWETCH[3]={
-			{DIO_u8PORTB,DIO_u8PIN0,SWITCH_u8PullUp,SWITCH_u8Bounce},
-			{DIO_u8PORTB,DIO_u8PIN1,SWITCH_u8PullUp,SWITCH_u8Bounce},
-			{DIO_u8PORTB,DIO_u8PIN2,SWITCH_u8PullUp,SWITCH_u8Bounce},
-	};
-    16d8:	ce 01       	movw	r24, r28
-    16da:	09 96       	adiw	r24, 0x09	; 9
-    16dc:	9b 8f       	std	Y+27, r25	; 0x1b
-    16de:	8a 8f       	std	Y+26, r24	; 0x1a
-    16e0:	e8 e6       	ldi	r30, 0x68	; 104
-    16e2:	f0 e0       	ldi	r31, 0x00	; 0
-    16e4:	fd 8f       	std	Y+29, r31	; 0x1d
-    16e6:	ec 8f       	std	Y+28, r30	; 0x1c
-    16e8:	fc e0       	ldi	r31, 0x0C	; 12
-    16ea:	fe 8f       	std	Y+30, r31	; 0x1e
-    16ec:	ec 8d       	ldd	r30, Y+28	; 0x1c
-    16ee:	fd 8d       	ldd	r31, Y+29	; 0x1d
-    16f0:	00 80       	ld	r0, Z
-    16f2:	8c 8d       	ldd	r24, Y+28	; 0x1c
-    16f4:	9d 8d       	ldd	r25, Y+29	; 0x1d
-    16f6:	01 96       	adiw	r24, 0x01	; 1
-    16f8:	9d 8f       	std	Y+29, r25	; 0x1d
-    16fa:	8c 8f       	std	Y+28, r24	; 0x1c
-    16fc:	ea 8d       	ldd	r30, Y+26	; 0x1a
-    16fe:	fb 8d       	ldd	r31, Y+27	; 0x1b
-    1700:	00 82       	st	Z, r0
-    1702:	8a 8d       	ldd	r24, Y+26	; 0x1a
-    1704:	9b 8d       	ldd	r25, Y+27	; 0x1b
-    1706:	01 96       	adiw	r24, 0x01	; 1
-    1708:	9b 8f       	std	Y+27, r25	; 0x1b
-    170a:	8a 8f       	std	Y+26, r24	; 0x1a
-    170c:	9e 8d       	ldd	r25, Y+30	; 0x1e
-    170e:	91 50       	subi	r25, 0x01	; 1
-    1710:	9e 8f       	std	Y+30, r25	; 0x1e
-    1712:	ee 8d       	ldd	r30, Y+30	; 0x1e
-    1714:	ee 23       	and	r30, r30
-    1716:	51 f7       	brne	.-44     	; 0x16ec <main+0x94>
-	for(u8 i=0;i<3;i++)
-    1718:	19 82       	std	Y+1, r1	; 0x01
-    171a:	11 c0       	rjmp	.+34     	; 0x173e <main+0xe6>
-	{
-		SWITCH_u8Switchinitialize(&SWETCH[i]);
-    171c:	89 81       	ldd	r24, Y+1	; 0x01
-    171e:	88 2f       	mov	r24, r24
-    1720:	90 e0       	ldi	r25, 0x00	; 0
-    1722:	9c 01       	movw	r18, r24
-    1724:	22 0f       	add	r18, r18
-    1726:	33 1f       	adc	r19, r19
-    1728:	22 0f       	add	r18, r18
-    172a:	33 1f       	adc	r19, r19
-    172c:	ce 01       	movw	r24, r28
-    172e:	09 96       	adiw	r24, 0x09	; 9
-    1730:	82 0f       	add	r24, r18
-    1732:	93 1f       	adc	r25, r19
-    1734:	0e 94 12 0a 	call	0x1424	; 0x1424 <SWITCH_u8Switchinitialize>
-	SWITCH_T SWETCH[3]={
-			{DIO_u8PORTB,DIO_u8PIN0,SWITCH_u8PullUp,SWITCH_u8Bounce},
-			{DIO_u8PORTB,DIO_u8PIN1,SWITCH_u8PullUp,SWITCH_u8Bounce},
-			{DIO_u8PORTB,DIO_u8PIN2,SWITCH_u8PullUp,SWITCH_u8Bounce},
-	};
-	for(u8 i=0;i<3;i++)
-    1738:	89 81       	ldd	r24, Y+1	; 0x01
-    173a:	8f 5f       	subi	r24, 0xFF	; 255
-    173c:	89 83       	std	Y+1, r24	; 0x01
-    173e:	89 81       	ldd	r24, Y+1	; 0x01
-    1740:	83 30       	cpi	r24, 0x03	; 3
-    1742:	60 f3       	brcs	.-40     	; 0x171c <main+0xc4>
-	{
-		SWITCH_u8Switchinitialize(&SWETCH[i]);
+					DIO_SetPinValue(_7SEGMENT->_7SEGMENT_u8enableport, _7SEGMENT->_7SEGMENT_u8enablepin, DIO_u8PIN_HIGH);
+    1790:	eb 81       	ldd	r30, Y+3	; 0x03
+    1792:	fc 81       	ldd	r31, Y+4	; 0x04
+    1794:	81 81       	ldd	r24, Z+1	; 0x01
+    1796:	eb 81       	ldd	r30, Y+3	; 0x03
+    1798:	fc 81       	ldd	r31, Y+4	; 0x04
+    179a:	92 81       	ldd	r25, Z+2	; 0x02
+    179c:	69 2f       	mov	r22, r25
+    179e:	41 e0       	ldi	r20, 0x01	; 1
+    17a0:	0e 94 fd 06 	call	0xdfa	; 0xdfa <DIO_SetPinValue>
+					for (i = 0; i < 4; i++)
+    17a4:	19 82       	std	Y+1, r1	; 0x01
+    17a6:	30 c0       	rjmp	.+96     	; 0x1808 <_7SEGMENT_u8ShowNumber+0x1b0>
+					{
+						if ((copy_u8number & (1 << i)))
+    17a8:	8d 81       	ldd	r24, Y+5	; 0x05
+    17aa:	28 2f       	mov	r18, r24
+    17ac:	30 e0       	ldi	r19, 0x00	; 0
+    17ae:	89 81       	ldd	r24, Y+1	; 0x01
+    17b0:	99 27       	eor	r25, r25
+    17b2:	87 fd       	sbrc	r24, 7
+    17b4:	90 95       	com	r25
+    17b6:	a9 01       	movw	r20, r18
+    17b8:	02 c0       	rjmp	.+4      	; 0x17be <_7SEGMENT_u8ShowNumber+0x166>
+    17ba:	55 95       	asr	r21
+    17bc:	47 95       	ror	r20
+    17be:	8a 95       	dec	r24
+    17c0:	e2 f7       	brpl	.-8      	; 0x17ba <_7SEGMENT_u8ShowNumber+0x162>
+    17c2:	ca 01       	movw	r24, r20
+    17c4:	81 70       	andi	r24, 0x01	; 1
+    17c6:	90 70       	andi	r25, 0x00	; 0
+    17c8:	88 23       	and	r24, r24
+    17ca:	71 f0       	breq	.+28     	; 0x17e8 <_7SEGMENT_u8ShowNumber+0x190>
+						{
+							DIO_SetPinValue(_7SEGMENT->_7SEGMENT_u8port, ((_7SEGMENT->_7SEGMENT_u8Decoderstartpin) + i), DIO_u8PIN_LOW);
+    17cc:	eb 81       	ldd	r30, Y+3	; 0x03
+    17ce:	fc 81       	ldd	r31, Y+4	; 0x04
+    17d0:	20 81       	ld	r18, Z
+    17d2:	eb 81       	ldd	r30, Y+3	; 0x03
+    17d4:	fc 81       	ldd	r31, Y+4	; 0x04
+    17d6:	95 81       	ldd	r25, Z+5	; 0x05
+    17d8:	89 81       	ldd	r24, Y+1	; 0x01
+    17da:	98 0f       	add	r25, r24
+    17dc:	82 2f       	mov	r24, r18
+    17de:	69 2f       	mov	r22, r25
+    17e0:	40 e0       	ldi	r20, 0x00	; 0
+    17e2:	0e 94 fd 06 	call	0xdfa	; 0xdfa <DIO_SetPinValue>
+    17e6:	0d c0       	rjmp	.+26     	; 0x1802 <_7SEGMENT_u8ShowNumber+0x1aa>
+						}
+						else
+						{
+							DIO_SetPinValue(_7SEGMENT->_7SEGMENT_u8port, ((_7SEGMENT->_7SEGMENT_u8Decoderstartpin) + i), DIO_u8PIN_HIGH);
+    17e8:	eb 81       	ldd	r30, Y+3	; 0x03
+    17ea:	fc 81       	ldd	r31, Y+4	; 0x04
+    17ec:	20 81       	ld	r18, Z
+    17ee:	eb 81       	ldd	r30, Y+3	; 0x03
+    17f0:	fc 81       	ldd	r31, Y+4	; 0x04
+    17f2:	95 81       	ldd	r25, Z+5	; 0x05
+    17f4:	89 81       	ldd	r24, Y+1	; 0x01
+    17f6:	98 0f       	add	r25, r24
+    17f8:	82 2f       	mov	r24, r18
+    17fa:	69 2f       	mov	r22, r25
+    17fc:	41 e0       	ldi	r20, 0x01	; 1
+    17fe:	0e 94 fd 06 	call	0xdfa	; 0xdfa <DIO_SetPinValue>
+					}
+					break;
+					case _7SEGMENT_u8COMMONANODE:
+
+					DIO_SetPinValue(_7SEGMENT->_7SEGMENT_u8enableport, _7SEGMENT->_7SEGMENT_u8enablepin, DIO_u8PIN_HIGH);
+					for (i = 0; i < 4; i++)
+    1802:	89 81       	ldd	r24, Y+1	; 0x01
+    1804:	8f 5f       	subi	r24, 0xFF	; 255
+    1806:	89 83       	std	Y+1, r24	; 0x01
+    1808:	89 81       	ldd	r24, Y+1	; 0x01
+    180a:	84 30       	cpi	r24, 0x04	; 4
+    180c:	6c f2       	brlt	.-102    	; 0x17a8 <_7SEGMENT_u8ShowNumber+0x150>
+    180e:	4d c0       	rjmp	.+154    	; 0x18aa <_7SEGMENT_u8ShowNumber+0x252>
+
+
+			}
+			else
+			{
+				local_u8error=1;
+    1810:	81 e0       	ldi	r24, 0x01	; 1
+    1812:	8a 83       	std	Y+2, r24	; 0x02
+    1814:	4a c0       	rjmp	.+148    	; 0x18aa <_7SEGMENT_u8ShowNumber+0x252>
+			}
+			break;
+			case _7SEGMENT_u8Nodecoder:
+			switch (_7SEGMENT->_7SEGMENT_u8commontype)
+    1816:	eb 81       	ldd	r30, Y+3	; 0x03
+    1818:	fc 81       	ldd	r31, Y+4	; 0x04
+    181a:	83 81       	ldd	r24, Z+3	; 0x03
+    181c:	28 2f       	mov	r18, r24
+    181e:	30 e0       	ldi	r19, 0x00	; 0
+    1820:	3f 83       	std	Y+7, r19	; 0x07
+    1822:	2e 83       	std	Y+6, r18	; 0x06
+    1824:	4e 81       	ldd	r20, Y+6	; 0x06
+    1826:	5f 81       	ldd	r21, Y+7	; 0x07
+    1828:	41 15       	cp	r20, r1
+    182a:	51 05       	cpc	r21, r1
+    182c:	f1 f0       	breq	.+60     	; 0x186a <_7SEGMENT_u8ShowNumber+0x212>
+    182e:	8e 81       	ldd	r24, Y+6	; 0x06
+    1830:	9f 81       	ldd	r25, Y+7	; 0x07
+    1832:	81 30       	cpi	r24, 0x01	; 1
+    1834:	91 05       	cpc	r25, r1
+    1836:	c9 f5       	brne	.+114    	; 0x18aa <_7SEGMENT_u8ShowNumber+0x252>
+			{
+				case _7SEGMENT_u8COMMONCATHODE:
+				DIO_SetPinValue(_7SEGMENT->_7SEGMENT_u8enableport, _7SEGMENT->_7SEGMENT_u8enablepin, DIO_u8PIN_LOW);
+    1838:	eb 81       	ldd	r30, Y+3	; 0x03
+    183a:	fc 81       	ldd	r31, Y+4	; 0x04
+    183c:	81 81       	ldd	r24, Z+1	; 0x01
+    183e:	eb 81       	ldd	r30, Y+3	; 0x03
+    1840:	fc 81       	ldd	r31, Y+4	; 0x04
+    1842:	92 81       	ldd	r25, Z+2	; 0x02
+    1844:	69 2f       	mov	r22, r25
+    1846:	40 e0       	ldi	r20, 0x00	; 0
+    1848:	0e 94 fd 06 	call	0xdfa	; 0xdfa <DIO_SetPinValue>
+				DIO_SetPortValue(_7SEGMENT->_7SEGMENT_u8port, _7SEGMENTNUM[copy_u8number]);
+    184c:	eb 81       	ldd	r30, Y+3	; 0x03
+    184e:	fc 81       	ldd	r31, Y+4	; 0x04
+    1850:	20 81       	ld	r18, Z
+    1852:	8d 81       	ldd	r24, Y+5	; 0x05
+    1854:	88 2f       	mov	r24, r24
+    1856:	90 e0       	ldi	r25, 0x00	; 0
+    1858:	fc 01       	movw	r30, r24
+    185a:	e8 59       	subi	r30, 0x98	; 152
+    185c:	ff 4f       	sbci	r31, 0xFF	; 255
+    185e:	90 81       	ld	r25, Z
+    1860:	82 2f       	mov	r24, r18
+    1862:	69 2f       	mov	r22, r25
+    1864:	0e 94 0f 08 	call	0x101e	; 0x101e <DIO_SetPortValue>
+    1868:	20 c0       	rjmp	.+64     	; 0x18aa <_7SEGMENT_u8ShowNumber+0x252>
+				break;
+				case _7SEGMENT_u8COMMONANODE:
+				DIO_SetPinValue(_7SEGMENT->_7SEGMENT_u8enableport, _7SEGMENT->_7SEGMENT_u8enablepin, DIO_u8PIN_HIGH);
+    186a:	eb 81       	ldd	r30, Y+3	; 0x03
+    186c:	fc 81       	ldd	r31, Y+4	; 0x04
+    186e:	81 81       	ldd	r24, Z+1	; 0x01
+    1870:	eb 81       	ldd	r30, Y+3	; 0x03
+    1872:	fc 81       	ldd	r31, Y+4	; 0x04
+    1874:	92 81       	ldd	r25, Z+2	; 0x02
+    1876:	69 2f       	mov	r22, r25
+    1878:	41 e0       	ldi	r20, 0x01	; 1
+    187a:	0e 94 fd 06 	call	0xdfa	; 0xdfa <DIO_SetPinValue>
+				DIO_SetPortValue(_7SEGMENT->_7SEGMENT_u8port, ~(_7SEGMENTNUM[copy_u8number]));
+    187e:	eb 81       	ldd	r30, Y+3	; 0x03
+    1880:	fc 81       	ldd	r31, Y+4	; 0x04
+    1882:	20 81       	ld	r18, Z
+    1884:	8d 81       	ldd	r24, Y+5	; 0x05
+    1886:	88 2f       	mov	r24, r24
+    1888:	90 e0       	ldi	r25, 0x00	; 0
+    188a:	fc 01       	movw	r30, r24
+    188c:	e8 59       	subi	r30, 0x98	; 152
+    188e:	ff 4f       	sbci	r31, 0xFF	; 255
+    1890:	80 81       	ld	r24, Z
+    1892:	98 2f       	mov	r25, r24
+    1894:	90 95       	com	r25
+    1896:	82 2f       	mov	r24, r18
+    1898:	69 2f       	mov	r22, r25
+    189a:	0e 94 0f 08 	call	0x101e	; 0x101e <DIO_SetPortValue>
+    189e:	05 c0       	rjmp	.+10     	; 0x18aa <_7SEGMENT_u8ShowNumber+0x252>
+				break;
+			}
+			break;
+			default: local_u8error = 1;
+    18a0:	81 e0       	ldi	r24, 0x01	; 1
+    18a2:	8a 83       	std	Y+2, r24	; 0x02
+    18a4:	02 c0       	rjmp	.+4      	; 0x18aa <_7SEGMENT_u8ShowNumber+0x252>
+		}
 	}
-	while(1)
+	else
 	{
-		SWITCH_state=0;
-    1744:	10 92 7a 00 	sts	0x007A, r1
+		local_u8error = 1;
+    18a6:	81 e0       	ldi	r24, 0x01	; 1
+    18a8:	8a 83       	std	Y+2, r24	; 0x02
+	}
 
-		if(SWITCH_u8Switchgetpressed(&SWETCH[0],&SWITCH_state)==0)
-    1748:	ce 01       	movw	r24, r28
-    174a:	09 96       	adiw	r24, 0x09	; 9
-    174c:	2a e7       	ldi	r18, 0x7A	; 122
-    174e:	30 e0       	ldi	r19, 0x00	; 0
-    1750:	b9 01       	movw	r22, r18
-    1752:	0e 94 ef 08 	call	0x11de	; 0x11de <SWITCH_u8Switchgetpressed>
-    1756:	88 23       	and	r24, r24
-    1758:	29 f4       	brne	.+10     	; 0x1764 <main+0x10c>
+	return local_u8error;
+    18aa:	8a 81       	ldd	r24, Y+2	; 0x02
+}
+    18ac:	2b 96       	adiw	r28, 0x0b	; 11
+    18ae:	0f b6       	in	r0, 0x3f	; 63
+    18b0:	f8 94       	cli
+    18b2:	de bf       	out	0x3e, r29	; 62
+    18b4:	0f be       	out	0x3f, r0	; 63
+    18b6:	cd bf       	out	0x3d, r28	; 61
+    18b8:	cf 91       	pop	r28
+    18ba:	df 91       	pop	r29
+    18bc:	08 95       	ret
+
+000018be <_7SEGMENT_u8HideNumber>:
+*
+* @param _7SEGMENT Pointer to the _7SEGMENT_T structure.
+* @return Status indicating success (0) or failure (1).
+*/
+u8 _7SEGMENT_u8HideNumber(const _7SEGMENT_T  *_7SEGMENT)
+{
+    18be:	df 93       	push	r29
+    18c0:	cf 93       	push	r28
+    18c2:	00 d0       	rcall	.+0      	; 0x18c4 <_7SEGMENT_u8HideNumber+0x6>
+    18c4:	00 d0       	rcall	.+0      	; 0x18c6 <_7SEGMENT_u8HideNumber+0x8>
+    18c6:	0f 92       	push	r0
+    18c8:	cd b7       	in	r28, 0x3d	; 61
+    18ca:	de b7       	in	r29, 0x3e	; 62
+    18cc:	9b 83       	std	Y+3, r25	; 0x03
+    18ce:	8a 83       	std	Y+2, r24	; 0x02
+	u8 local_u8error = 0;
+    18d0:	19 82       	std	Y+1, r1	; 0x01
+	if ((_7SEGMENT != NULL) && (_7SEGMENT->_7SEGMENT_u8port <= DIO_u8PORTD) && (_7SEGMENT->_7SEGMENT_u8enablepin < DIO_u8PIN7) && (_7SEGMENT->_7SEGMENT_u8enableport <= DIO_u8PORTD) && (_7SEGMENT->_7SEGMENT_u8commontype < 2))
+    18d2:	8a 81       	ldd	r24, Y+2	; 0x02
+    18d4:	9b 81       	ldd	r25, Y+3	; 0x03
+    18d6:	00 97       	sbiw	r24, 0x00	; 0
+    18d8:	d1 f1       	breq	.+116    	; 0x194e <_7SEGMENT_u8HideNumber+0x90>
+    18da:	ea 81       	ldd	r30, Y+2	; 0x02
+    18dc:	fb 81       	ldd	r31, Y+3	; 0x03
+    18de:	80 81       	ld	r24, Z
+    18e0:	84 30       	cpi	r24, 0x04	; 4
+    18e2:	a8 f5       	brcc	.+106    	; 0x194e <_7SEGMENT_u8HideNumber+0x90>
+    18e4:	ea 81       	ldd	r30, Y+2	; 0x02
+    18e6:	fb 81       	ldd	r31, Y+3	; 0x03
+    18e8:	82 81       	ldd	r24, Z+2	; 0x02
+    18ea:	87 30       	cpi	r24, 0x07	; 7
+    18ec:	80 f5       	brcc	.+96     	; 0x194e <_7SEGMENT_u8HideNumber+0x90>
+    18ee:	ea 81       	ldd	r30, Y+2	; 0x02
+    18f0:	fb 81       	ldd	r31, Y+3	; 0x03
+    18f2:	81 81       	ldd	r24, Z+1	; 0x01
+    18f4:	84 30       	cpi	r24, 0x04	; 4
+    18f6:	58 f5       	brcc	.+86     	; 0x194e <_7SEGMENT_u8HideNumber+0x90>
+    18f8:	ea 81       	ldd	r30, Y+2	; 0x02
+    18fa:	fb 81       	ldd	r31, Y+3	; 0x03
+    18fc:	83 81       	ldd	r24, Z+3	; 0x03
+    18fe:	82 30       	cpi	r24, 0x02	; 2
+    1900:	30 f5       	brcc	.+76     	; 0x194e <_7SEGMENT_u8HideNumber+0x90>
+	{
+		switch (_7SEGMENT->_7SEGMENT_u8commontype)
+    1902:	ea 81       	ldd	r30, Y+2	; 0x02
+    1904:	fb 81       	ldd	r31, Y+3	; 0x03
+    1906:	83 81       	ldd	r24, Z+3	; 0x03
+    1908:	28 2f       	mov	r18, r24
+    190a:	30 e0       	ldi	r19, 0x00	; 0
+    190c:	3d 83       	std	Y+5, r19	; 0x05
+    190e:	2c 83       	std	Y+4, r18	; 0x04
+    1910:	8c 81       	ldd	r24, Y+4	; 0x04
+    1912:	9d 81       	ldd	r25, Y+5	; 0x05
+    1914:	00 97       	sbiw	r24, 0x00	; 0
+    1916:	81 f0       	breq	.+32     	; 0x1938 <_7SEGMENT_u8HideNumber+0x7a>
+    1918:	2c 81       	ldd	r18, Y+4	; 0x04
+    191a:	3d 81       	ldd	r19, Y+5	; 0x05
+    191c:	21 30       	cpi	r18, 0x01	; 1
+    191e:	31 05       	cpc	r19, r1
+    1920:	c1 f4       	brne	.+48     	; 0x1952 <_7SEGMENT_u8HideNumber+0x94>
 		{
-			LED_u8TurnOnLED(&LED[0]);
-    175a:	ce 01       	movw	r24, r28
-    175c:	03 96       	adiw	r24, 0x03	; 3
-    175e:	0e 94 9a 0a 	call	0x1534	; 0x1534 <LED_u8TurnOnLED>
-    1762:	f0 cf       	rjmp	.-32     	; 0x1744 <main+0xec>
+			case _7SEGMENT_u8COMMONCATHODE:
+			DIO_SetPinValue(_7SEGMENT->_7SEGMENT_u8enableport, _7SEGMENT->_7SEGMENT_u8enablepin, DIO_u8PIN_HIGH);
+    1922:	ea 81       	ldd	r30, Y+2	; 0x02
+    1924:	fb 81       	ldd	r31, Y+3	; 0x03
+    1926:	81 81       	ldd	r24, Z+1	; 0x01
+    1928:	ea 81       	ldd	r30, Y+2	; 0x02
+    192a:	fb 81       	ldd	r31, Y+3	; 0x03
+    192c:	92 81       	ldd	r25, Z+2	; 0x02
+    192e:	69 2f       	mov	r22, r25
+    1930:	41 e0       	ldi	r20, 0x01	; 1
+    1932:	0e 94 fd 06 	call	0xdfa	; 0xdfa <DIO_SetPinValue>
+    1936:	0d c0       	rjmp	.+26     	; 0x1952 <_7SEGMENT_u8HideNumber+0x94>
+			break;
+			case _7SEGMENT_u8COMMONANODE:
+			DIO_SetPinValue(_7SEGMENT->_7SEGMENT_u8enableport, _7SEGMENT->_7SEGMENT_u8enablepin, DIO_u8PIN_LOW);
+    1938:	ea 81       	ldd	r30, Y+2	; 0x02
+    193a:	fb 81       	ldd	r31, Y+3	; 0x03
+    193c:	81 81       	ldd	r24, Z+1	; 0x01
+    193e:	ea 81       	ldd	r30, Y+2	; 0x02
+    1940:	fb 81       	ldd	r31, Y+3	; 0x03
+    1942:	92 81       	ldd	r25, Z+2	; 0x02
+    1944:	69 2f       	mov	r22, r25
+    1946:	40 e0       	ldi	r20, 0x00	; 0
+    1948:	0e 94 fd 06 	call	0xdfa	; 0xdfa <DIO_SetPinValue>
+    194c:	02 c0       	rjmp	.+4      	; 0x1952 <_7SEGMENT_u8HideNumber+0x94>
+
+	}
+
+	else
+	{
+		local_u8error = 1;
+    194e:	81 e0       	ldi	r24, 0x01	; 1
+    1950:	89 83       	std	Y+1, r24	; 0x01
+	}
+	return local_u8error;
+    1952:	89 81       	ldd	r24, Y+1	; 0x01
+}
+    1954:	0f 90       	pop	r0
+    1956:	0f 90       	pop	r0
+    1958:	0f 90       	pop	r0
+    195a:	0f 90       	pop	r0
+    195c:	0f 90       	pop	r0
+    195e:	cf 91       	pop	r28
+    1960:	df 91       	pop	r29
+    1962:	08 95       	ret
+
+00001964 <_7SEGMENT_u8Initialize>:
+*
+* @param _7SEGMENT Pointer to the _7SEGMENT_T structure.
+* @return Status indicating success (0) or failure (1).
+*/
+u8 _7SEGMENT_u8Initialize(const _7SEGMENT_T  *_7SEGMENT)
+{
+    1964:	df 93       	push	r29
+    1966:	cf 93       	push	r28
+    1968:	00 d0       	rcall	.+0      	; 0x196a <_7SEGMENT_u8Initialize+0x6>
+    196a:	00 d0       	rcall	.+0      	; 0x196c <_7SEGMENT_u8Initialize+0x8>
+    196c:	00 d0       	rcall	.+0      	; 0x196e <_7SEGMENT_u8Initialize+0xa>
+    196e:	cd b7       	in	r28, 0x3d	; 61
+    1970:	de b7       	in	r29, 0x3e	; 62
+    1972:	9c 83       	std	Y+4, r25	; 0x04
+    1974:	8b 83       	std	Y+3, r24	; 0x03
+	u8 local_u8error = 0;
+    1976:	1a 82       	std	Y+2, r1	; 0x02
+	u8 i = 0;
+    1978:	19 82       	std	Y+1, r1	; 0x01
+	if ((_7SEGMENT != NULL) && (_7SEGMENT->_7SEGMENT_u8port <= DIO_u8PORTD) && (_7SEGMENT->_7SEGMENT_u8enablepin < DIO_u8PIN7) && (_7SEGMENT->_7SEGMENT_u8enableport <= DIO_u8PORTD) && (_7SEGMENT->_7SEGMENT_u8commontype < 2) )
+    197a:	8b 81       	ldd	r24, Y+3	; 0x03
+    197c:	9c 81       	ldd	r25, Y+4	; 0x04
+    197e:	00 97       	sbiw	r24, 0x00	; 0
+    1980:	09 f4       	brne	.+2      	; 0x1984 <_7SEGMENT_u8Initialize+0x20>
+    1982:	64 c0       	rjmp	.+200    	; 0x1a4c <_7SEGMENT_u8Initialize+0xe8>
+    1984:	eb 81       	ldd	r30, Y+3	; 0x03
+    1986:	fc 81       	ldd	r31, Y+4	; 0x04
+    1988:	80 81       	ld	r24, Z
+    198a:	84 30       	cpi	r24, 0x04	; 4
+    198c:	08 f0       	brcs	.+2      	; 0x1990 <_7SEGMENT_u8Initialize+0x2c>
+    198e:	5e c0       	rjmp	.+188    	; 0x1a4c <_7SEGMENT_u8Initialize+0xe8>
+    1990:	eb 81       	ldd	r30, Y+3	; 0x03
+    1992:	fc 81       	ldd	r31, Y+4	; 0x04
+    1994:	82 81       	ldd	r24, Z+2	; 0x02
+    1996:	87 30       	cpi	r24, 0x07	; 7
+    1998:	08 f0       	brcs	.+2      	; 0x199c <_7SEGMENT_u8Initialize+0x38>
+    199a:	58 c0       	rjmp	.+176    	; 0x1a4c <_7SEGMENT_u8Initialize+0xe8>
+    199c:	eb 81       	ldd	r30, Y+3	; 0x03
+    199e:	fc 81       	ldd	r31, Y+4	; 0x04
+    19a0:	81 81       	ldd	r24, Z+1	; 0x01
+    19a2:	84 30       	cpi	r24, 0x04	; 4
+    19a4:	08 f0       	brcs	.+2      	; 0x19a8 <_7SEGMENT_u8Initialize+0x44>
+    19a6:	52 c0       	rjmp	.+164    	; 0x1a4c <_7SEGMENT_u8Initialize+0xe8>
+    19a8:	eb 81       	ldd	r30, Y+3	; 0x03
+    19aa:	fc 81       	ldd	r31, Y+4	; 0x04
+    19ac:	83 81       	ldd	r24, Z+3	; 0x03
+    19ae:	82 30       	cpi	r24, 0x02	; 2
+    19b0:	08 f0       	brcs	.+2      	; 0x19b4 <_7SEGMENT_u8Initialize+0x50>
+    19b2:	4c c0       	rjmp	.+152    	; 0x1a4c <_7SEGMENT_u8Initialize+0xe8>
+	{
+		switch (_7SEGMENT->_7SEGMENT_u8Decoders)
+    19b4:	eb 81       	ldd	r30, Y+3	; 0x03
+    19b6:	fc 81       	ldd	r31, Y+4	; 0x04
+    19b8:	84 81       	ldd	r24, Z+4	; 0x04
+    19ba:	28 2f       	mov	r18, r24
+    19bc:	30 e0       	ldi	r19, 0x00	; 0
+    19be:	3e 83       	std	Y+6, r19	; 0x06
+    19c0:	2d 83       	std	Y+5, r18	; 0x05
+    19c2:	8d 81       	ldd	r24, Y+5	; 0x05
+    19c4:	9e 81       	ldd	r25, Y+6	; 0x06
+    19c6:	00 97       	sbiw	r24, 0x00	; 0
+    19c8:	69 f1       	breq	.+90     	; 0x1a24 <_7SEGMENT_u8Initialize+0xc0>
+    19ca:	2d 81       	ldd	r18, Y+5	; 0x05
+    19cc:	3e 81       	ldd	r19, Y+6	; 0x06
+    19ce:	21 30       	cpi	r18, 0x01	; 1
+    19d0:	31 05       	cpc	r19, r1
+    19d2:	c9 f5       	brne	.+114    	; 0x1a46 <_7SEGMENT_u8Initialize+0xe2>
+		{
+
+			case _7SEGMENT_u8Decoder:
+			if ((_7SEGMENT->_7SEGMENT_u8Decoderstartpin < 5))
+    19d4:	eb 81       	ldd	r30, Y+3	; 0x03
+    19d6:	fc 81       	ldd	r31, Y+4	; 0x04
+    19d8:	85 81       	ldd	r24, Z+5	; 0x05
+    19da:	85 30       	cpi	r24, 0x05	; 5
+    19dc:	00 f5       	brcc	.+64     	; 0x1a1e <_7SEGMENT_u8Initialize+0xba>
+			{
+				for (i = 0; i < 4; i++)
+    19de:	19 82       	std	Y+1, r1	; 0x01
+    19e0:	10 c0       	rjmp	.+32     	; 0x1a02 <_7SEGMENT_u8Initialize+0x9e>
+				{
+					DIO_SetPinDirection(_7SEGMENT->_7SEGMENT_u8port, ((_7SEGMENT->_7SEGMENT_u8Decoderstartpin) + i), DIO_u8PIN_OUTPUT);
+    19e2:	eb 81       	ldd	r30, Y+3	; 0x03
+    19e4:	fc 81       	ldd	r31, Y+4	; 0x04
+    19e6:	20 81       	ld	r18, Z
+    19e8:	eb 81       	ldd	r30, Y+3	; 0x03
+    19ea:	fc 81       	ldd	r31, Y+4	; 0x04
+    19ec:	95 81       	ldd	r25, Z+5	; 0x05
+    19ee:	89 81       	ldd	r24, Y+1	; 0x01
+    19f0:	98 0f       	add	r25, r24
+    19f2:	82 2f       	mov	r24, r18
+    19f4:	69 2f       	mov	r22, r25
+    19f6:	41 e0       	ldi	r20, 0x01	; 1
+    19f8:	0e 94 a3 05 	call	0xb46	; 0xb46 <DIO_SetPinDirection>
+		{
+
+			case _7SEGMENT_u8Decoder:
+			if ((_7SEGMENT->_7SEGMENT_u8Decoderstartpin < 5))
+			{
+				for (i = 0; i < 4; i++)
+    19fc:	89 81       	ldd	r24, Y+1	; 0x01
+    19fe:	8f 5f       	subi	r24, 0xFF	; 255
+    1a00:	89 83       	std	Y+1, r24	; 0x01
+    1a02:	89 81       	ldd	r24, Y+1	; 0x01
+    1a04:	84 30       	cpi	r24, 0x04	; 4
+    1a06:	68 f3       	brcs	.-38     	; 0x19e2 <_7SEGMENT_u8Initialize+0x7e>
+				{
+					DIO_SetPinDirection(_7SEGMENT->_7SEGMENT_u8port, ((_7SEGMENT->_7SEGMENT_u8Decoderstartpin) + i), DIO_u8PIN_OUTPUT);
+				}
+				DIO_SetPinDirection(_7SEGMENT->_7SEGMENT_u8enableport, _7SEGMENT->_7SEGMENT_u8enablepin, DIO_u8PIN_OUTPUT);
+    1a08:	eb 81       	ldd	r30, Y+3	; 0x03
+    1a0a:	fc 81       	ldd	r31, Y+4	; 0x04
+    1a0c:	81 81       	ldd	r24, Z+1	; 0x01
+    1a0e:	eb 81       	ldd	r30, Y+3	; 0x03
+    1a10:	fc 81       	ldd	r31, Y+4	; 0x04
+    1a12:	92 81       	ldd	r25, Z+2	; 0x02
+    1a14:	69 2f       	mov	r22, r25
+    1a16:	41 e0       	ldi	r20, 0x01	; 1
+    1a18:	0e 94 a3 05 	call	0xb46	; 0xb46 <DIO_SetPinDirection>
+    1a1c:	19 c0       	rjmp	.+50     	; 0x1a50 <_7SEGMENT_u8Initialize+0xec>
+
+			}
+			else
+			{
+				local_u8error=1;
+    1a1e:	81 e0       	ldi	r24, 0x01	; 1
+    1a20:	8a 83       	std	Y+2, r24	; 0x02
+    1a22:	16 c0       	rjmp	.+44     	; 0x1a50 <_7SEGMENT_u8Initialize+0xec>
+			}
+
+			break;
+			case _7SEGMENT_u8Nodecoder:
+
+			DIO_SetPortDirection(_7SEGMENT->_7SEGMENT_u8port, DIO_u8PORT_OUTPUT);
+    1a24:	eb 81       	ldd	r30, Y+3	; 0x03
+    1a26:	fc 81       	ldd	r31, Y+4	; 0x04
+    1a28:	80 81       	ld	r24, Z
+    1a2a:	6f ef       	ldi	r22, 0xFF	; 255
+    1a2c:	0e 94 b5 06 	call	0xd6a	; 0xd6a <DIO_SetPortDirection>
+			DIO_SetPinDirection(_7SEGMENT->_7SEGMENT_u8enableport, _7SEGMENT->_7SEGMENT_u8enablepin, DIO_u8PIN_OUTPUT);
+    1a30:	eb 81       	ldd	r30, Y+3	; 0x03
+    1a32:	fc 81       	ldd	r31, Y+4	; 0x04
+    1a34:	81 81       	ldd	r24, Z+1	; 0x01
+    1a36:	eb 81       	ldd	r30, Y+3	; 0x03
+    1a38:	fc 81       	ldd	r31, Y+4	; 0x04
+    1a3a:	92 81       	ldd	r25, Z+2	; 0x02
+    1a3c:	69 2f       	mov	r22, r25
+    1a3e:	41 e0       	ldi	r20, 0x01	; 1
+    1a40:	0e 94 a3 05 	call	0xb46	; 0xb46 <DIO_SetPinDirection>
+    1a44:	05 c0       	rjmp	.+10     	; 0x1a50 <_7SEGMENT_u8Initialize+0xec>
+
+			break;
+			default:
+			local_u8error = 1;
+    1a46:	81 e0       	ldi	r24, 0x01	; 1
+    1a48:	8a 83       	std	Y+2, r24	; 0x02
+    1a4a:	02 c0       	rjmp	.+4      	; 0x1a50 <_7SEGMENT_u8Initialize+0xec>
 		}
-		else if(SWITCH_u8Switchgetpressed(&SWETCH[1],&SWITCH_state)==0)
-    1764:	ce 01       	movw	r24, r28
-    1766:	09 96       	adiw	r24, 0x09	; 9
-    1768:	04 96       	adiw	r24, 0x04	; 4
-    176a:	2a e7       	ldi	r18, 0x7A	; 122
-    176c:	30 e0       	ldi	r19, 0x00	; 0
-    176e:	b9 01       	movw	r22, r18
-    1770:	0e 94 ef 08 	call	0x11de	; 0x11de <SWITCH_u8Switchgetpressed>
-    1774:	88 23       	and	r24, r24
-    1776:	31 f4       	brne	.+12     	; 0x1784 <main+0x12c>
-		{
-			LED_u8TurnOnLED(&LED[1]);
-    1778:	ce 01       	movw	r24, r28
-    177a:	03 96       	adiw	r24, 0x03	; 3
-    177c:	03 96       	adiw	r24, 0x03	; 3
-    177e:	0e 94 9a 0a 	call	0x1534	; 0x1534 <LED_u8TurnOnLED>
-    1782:	e0 cf       	rjmp	.-64     	; 0x1744 <main+0xec>
-		}
-		else if(SWITCH_u8Switchgetpressed(&SWETCH[2],&SWITCH_state)==0)
-    1784:	ce 01       	movw	r24, r28
-    1786:	09 96       	adiw	r24, 0x09	; 9
-    1788:	08 96       	adiw	r24, 0x08	; 8
-    178a:	2a e7       	ldi	r18, 0x7A	; 122
-    178c:	30 e0       	ldi	r19, 0x00	; 0
-    178e:	b9 01       	movw	r22, r18
-    1790:	0e 94 ef 08 	call	0x11de	; 0x11de <SWITCH_u8Switchgetpressed>
-    1794:	88 23       	and	r24, r24
-    1796:	51 f4       	brne	.+20     	; 0x17ac <main+0x154>
-		{
-			LED_u8TurnOnLED(&LED[0]);
-    1798:	ce 01       	movw	r24, r28
-    179a:	03 96       	adiw	r24, 0x03	; 3
-    179c:	0e 94 9a 0a 	call	0x1534	; 0x1534 <LED_u8TurnOnLED>
-			LED_u8TurnOnLED(&LED[1]);
-    17a0:	ce 01       	movw	r24, r28
-    17a2:	03 96       	adiw	r24, 0x03	; 3
-    17a4:	03 96       	adiw	r24, 0x03	; 3
-    17a6:	0e 94 9a 0a 	call	0x1534	; 0x1534 <LED_u8TurnOnLED>
-    17aa:	cc cf       	rjmp	.-104    	; 0x1744 <main+0xec>
-		}
-		else
-		{
-			LED_u8TurnOffLED(&LED[0]);
-    17ac:	ce 01       	movw	r24, r28
-    17ae:	03 96       	adiw	r24, 0x03	; 3
-    17b0:	0e 94 e3 0a 	call	0x15c6	; 0x15c6 <LED_u8TurnOffLED>
-			LED_u8TurnOffLED(&LED[1]);
-    17b4:	ce 01       	movw	r24, r28
-    17b6:	03 96       	adiw	r24, 0x03	; 3
-    17b8:	03 96       	adiw	r24, 0x03	; 3
-    17ba:	0e 94 e3 0a 	call	0x15c6	; 0x15c6 <LED_u8TurnOffLED>
-			LED_u8TurnOffLED(&LED[2]);
-    17be:	ce 01       	movw	r24, r28
-    17c0:	03 96       	adiw	r24, 0x03	; 3
-    17c2:	06 96       	adiw	r24, 0x06	; 6
-    17c4:	0e 94 e3 0a 	call	0x15c6	; 0x15c6 <LED_u8TurnOffLED>
-    17c8:	bd cf       	rjmp	.-134    	; 0x1744 <main+0xec>
+	}
 
-000017ca <__prologue_saves__>:
-    17ca:	2f 92       	push	r2
-    17cc:	3f 92       	push	r3
-    17ce:	4f 92       	push	r4
-    17d0:	5f 92       	push	r5
-    17d2:	6f 92       	push	r6
-    17d4:	7f 92       	push	r7
-    17d6:	8f 92       	push	r8
-    17d8:	9f 92       	push	r9
-    17da:	af 92       	push	r10
-    17dc:	bf 92       	push	r11
-    17de:	cf 92       	push	r12
-    17e0:	df 92       	push	r13
-    17e2:	ef 92       	push	r14
-    17e4:	ff 92       	push	r15
-    17e6:	0f 93       	push	r16
-    17e8:	1f 93       	push	r17
-    17ea:	cf 93       	push	r28
-    17ec:	df 93       	push	r29
-    17ee:	cd b7       	in	r28, 0x3d	; 61
-    17f0:	de b7       	in	r29, 0x3e	; 62
-    17f2:	ca 1b       	sub	r28, r26
-    17f4:	db 0b       	sbc	r29, r27
-    17f6:	0f b6       	in	r0, 0x3f	; 63
-    17f8:	f8 94       	cli
-    17fa:	de bf       	out	0x3e, r29	; 62
-    17fc:	0f be       	out	0x3f, r0	; 63
-    17fe:	cd bf       	out	0x3d, r28	; 61
-    1800:	09 94       	ijmp
+	else
+	{
+		local_u8error = 1;
+    1a4c:	81 e0       	ldi	r24, 0x01	; 1
+    1a4e:	8a 83       	std	Y+2, r24	; 0x02
+	}
+	return local_u8error;
+    1a50:	8a 81       	ldd	r24, Y+2	; 0x02
+}
+    1a52:	26 96       	adiw	r28, 0x06	; 6
+    1a54:	0f b6       	in	r0, 0x3f	; 63
+    1a56:	f8 94       	cli
+    1a58:	de bf       	out	0x3e, r29	; 62
+    1a5a:	0f be       	out	0x3f, r0	; 63
+    1a5c:	cd bf       	out	0x3d, r28	; 61
+    1a5e:	cf 91       	pop	r28
+    1a60:	df 91       	pop	r29
+    1a62:	08 95       	ret
 
-00001802 <__epilogue_restores__>:
-    1802:	2a 88       	ldd	r2, Y+18	; 0x12
-    1804:	39 88       	ldd	r3, Y+17	; 0x11
-    1806:	48 88       	ldd	r4, Y+16	; 0x10
-    1808:	5f 84       	ldd	r5, Y+15	; 0x0f
-    180a:	6e 84       	ldd	r6, Y+14	; 0x0e
-    180c:	7d 84       	ldd	r7, Y+13	; 0x0d
-    180e:	8c 84       	ldd	r8, Y+12	; 0x0c
-    1810:	9b 84       	ldd	r9, Y+11	; 0x0b
-    1812:	aa 84       	ldd	r10, Y+10	; 0x0a
-    1814:	b9 84       	ldd	r11, Y+9	; 0x09
-    1816:	c8 84       	ldd	r12, Y+8	; 0x08
-    1818:	df 80       	ldd	r13, Y+7	; 0x07
-    181a:	ee 80       	ldd	r14, Y+6	; 0x06
-    181c:	fd 80       	ldd	r15, Y+5	; 0x05
-    181e:	0c 81       	ldd	r16, Y+4	; 0x04
-    1820:	1b 81       	ldd	r17, Y+3	; 0x03
-    1822:	aa 81       	ldd	r26, Y+2	; 0x02
-    1824:	b9 81       	ldd	r27, Y+1	; 0x01
-    1826:	ce 0f       	add	r28, r30
-    1828:	d1 1d       	adc	r29, r1
-    182a:	0f b6       	in	r0, 0x3f	; 63
-    182c:	f8 94       	cli
-    182e:	de bf       	out	0x3e, r29	; 62
-    1830:	0f be       	out	0x3f, r0	; 63
-    1832:	cd bf       	out	0x3d, r28	; 61
-    1834:	ed 01       	movw	r28, r26
-    1836:	08 95       	ret
+00001a64 <main>:
+ *
+ *  Created on: ???/???/????
+ *      Author: user
+ */
 
-00001838 <_exit>:
-    1838:	f8 94       	cli
+int main(){
+    1a64:	df 93       	push	r29
+    1a66:	cf 93       	push	r28
+    1a68:	cd b7       	in	r28, 0x3d	; 61
+    1a6a:	de b7       	in	r29, 0x3e	; 62
+	return 0;
+    1a6c:	80 e0       	ldi	r24, 0x00	; 0
+    1a6e:	90 e0       	ldi	r25, 0x00	; 0
+}
+    1a70:	cf 91       	pop	r28
+    1a72:	df 91       	pop	r29
+    1a74:	08 95       	ret
 
-0000183a <__stop_program>:
-    183a:	ff cf       	rjmp	.-2      	; 0x183a <__stop_program>
+00001a76 <__prologue_saves__>:
+    1a76:	2f 92       	push	r2
+    1a78:	3f 92       	push	r3
+    1a7a:	4f 92       	push	r4
+    1a7c:	5f 92       	push	r5
+    1a7e:	6f 92       	push	r6
+    1a80:	7f 92       	push	r7
+    1a82:	8f 92       	push	r8
+    1a84:	9f 92       	push	r9
+    1a86:	af 92       	push	r10
+    1a88:	bf 92       	push	r11
+    1a8a:	cf 92       	push	r12
+    1a8c:	df 92       	push	r13
+    1a8e:	ef 92       	push	r14
+    1a90:	ff 92       	push	r15
+    1a92:	0f 93       	push	r16
+    1a94:	1f 93       	push	r17
+    1a96:	cf 93       	push	r28
+    1a98:	df 93       	push	r29
+    1a9a:	cd b7       	in	r28, 0x3d	; 61
+    1a9c:	de b7       	in	r29, 0x3e	; 62
+    1a9e:	ca 1b       	sub	r28, r26
+    1aa0:	db 0b       	sbc	r29, r27
+    1aa2:	0f b6       	in	r0, 0x3f	; 63
+    1aa4:	f8 94       	cli
+    1aa6:	de bf       	out	0x3e, r29	; 62
+    1aa8:	0f be       	out	0x3f, r0	; 63
+    1aaa:	cd bf       	out	0x3d, r28	; 61
+    1aac:	09 94       	ijmp
+
+00001aae <__epilogue_restores__>:
+    1aae:	2a 88       	ldd	r2, Y+18	; 0x12
+    1ab0:	39 88       	ldd	r3, Y+17	; 0x11
+    1ab2:	48 88       	ldd	r4, Y+16	; 0x10
+    1ab4:	5f 84       	ldd	r5, Y+15	; 0x0f
+    1ab6:	6e 84       	ldd	r6, Y+14	; 0x0e
+    1ab8:	7d 84       	ldd	r7, Y+13	; 0x0d
+    1aba:	8c 84       	ldd	r8, Y+12	; 0x0c
+    1abc:	9b 84       	ldd	r9, Y+11	; 0x0b
+    1abe:	aa 84       	ldd	r10, Y+10	; 0x0a
+    1ac0:	b9 84       	ldd	r11, Y+9	; 0x09
+    1ac2:	c8 84       	ldd	r12, Y+8	; 0x08
+    1ac4:	df 80       	ldd	r13, Y+7	; 0x07
+    1ac6:	ee 80       	ldd	r14, Y+6	; 0x06
+    1ac8:	fd 80       	ldd	r15, Y+5	; 0x05
+    1aca:	0c 81       	ldd	r16, Y+4	; 0x04
+    1acc:	1b 81       	ldd	r17, Y+3	; 0x03
+    1ace:	aa 81       	ldd	r26, Y+2	; 0x02
+    1ad0:	b9 81       	ldd	r27, Y+1	; 0x01
+    1ad2:	ce 0f       	add	r28, r30
+    1ad4:	d1 1d       	adc	r29, r1
+    1ad6:	0f b6       	in	r0, 0x3f	; 63
+    1ad8:	f8 94       	cli
+    1ada:	de bf       	out	0x3e, r29	; 62
+    1adc:	0f be       	out	0x3f, r0	; 63
+    1ade:	cd bf       	out	0x3d, r28	; 61
+    1ae0:	ed 01       	movw	r28, r26
+    1ae2:	08 95       	ret
+
+00001ae4 <_exit>:
+    1ae4:	f8 94       	cli
+
+00001ae6 <__stop_program>:
+    1ae6:	ff cf       	rjmp	.-2      	; 0x1ae6 <__stop_program>

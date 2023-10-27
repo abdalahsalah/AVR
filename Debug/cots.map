@@ -3,7 +3,7 @@ Archive member included because of file (symbol)
 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
                               d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o (exit)
 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
-                              ./APP/WEEK2/TASK1/main.o (__do_copy_data)
+                              ./Hall/7_SEGMENT/_7SEGMENT_program.o (__do_copy_data)
 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
                               ./Hall/SWITCH/SWITCH_program.o (__do_clear_bss)
 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o)
@@ -55,6 +55,8 @@ LOAD d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../.
 LOAD ./MCAL/DIO/DIO_program.o
 LOAD ./Hall/SWITCH/SWITCH_program.o
 LOAD ./Hall/LED/LED_program.o
+LOAD ./Hall/7_SEGMENT/_7SEGMENT_program.o
+LOAD ./Hall/7_SEGMENT/main.o
 LOAD ./APP/WEEK2/TASK2/main.o
 LOAD ./APP/WEEK2/TASK1/main.o
 LOAD ./APP/WEEK1/snake/main.o
@@ -153,7 +155,7 @@ LOAD d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x183c
+.text           0x00000000     0x1ae8
  *(.vectors)
  .vectors       0x00000000       0x54 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000000                __vectors
@@ -233,6 +235,8 @@ LOAD d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5
  .text          0x00000092        0x0 ./MCAL/DIO/DIO_program.o
  .text          0x00000092        0x0 ./Hall/SWITCH/SWITCH_program.o
  .text          0x00000092        0x0 ./Hall/LED/LED_program.o
+ .text          0x00000092        0x0 ./Hall/7_SEGMENT/_7SEGMENT_program.o
+ .text          0x00000092        0x0 ./Hall/7_SEGMENT/main.o
  .text          0x00000092        0x0 ./APP/WEEK2/TASK2/main.o
  .text          0x00000092        0x0 ./APP/WEEK2/TASK1/main.o
  .text          0x00000092        0x0 ./APP/WEEK1/snake/main.o
@@ -296,20 +300,29 @@ LOAD d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5
  .text.LED_u8TurnOffLED
                 0x000015c6       0x92 ./Hall/LED/LED_program.o
                 0x000015c6                LED_u8TurnOffLED
- .text.main     0x00001658      0x172 ./APP/WEEK2/TASK1/main.o
-                0x00001658                main
- .text.libgcc   0x000017ca        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x000017ca        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .text.libgcc   0x000017ca        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc   0x000017ca       0x38 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
-                0x000017ca                __prologue_saves__
- .text.libgcc   0x00001802       0x36 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
-                0x00001802                __epilogue_restores__
-                0x00001838                . = ALIGN (0x2)
+ .text._7SEGMENT_u8ShowNumber
+                0x00001658      0x266 ./Hall/7_SEGMENT/_7SEGMENT_program.o
+                0x00001658                _7SEGMENT_u8ShowNumber
+ .text._7SEGMENT_u8HideNumber
+                0x000018be       0xa6 ./Hall/7_SEGMENT/_7SEGMENT_program.o
+                0x000018be                _7SEGMENT_u8HideNumber
+ .text._7SEGMENT_u8Initialize
+                0x00001964      0x100 ./Hall/7_SEGMENT/_7SEGMENT_program.o
+                0x00001964                _7SEGMENT_u8Initialize
+ .text.main     0x00001a64       0x12 ./Hall/7_SEGMENT/main.o
+                0x00001a64                main
+ .text.libgcc   0x00001a76        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00001a76        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00001a76        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00001a76       0x38 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
+                0x00001a76                __prologue_saves__
+ .text.libgcc   0x00001aae       0x36 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
+                0x00001aae                __epilogue_restores__
+                0x00001ae4                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00001838        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x00001838                exit
-                0x00001838                _exit
+ .fini9         0x00001ae4        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00001ae4                exit
+                0x00001ae4                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -328,17 +341,19 @@ LOAD d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00001838        0x4 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x00001ae4        0x4 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000183c                _etext = .
+                0x00001ae8                _etext = .
 
-.data           0x00800060       0x1a load address 0x0000183c
+.data           0x00800060       0x12 load address 0x00001ae8
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
  .data          0x00800060        0x0 ./MCAL/DIO/DIO_program.o
  .data          0x00800060        0x0 ./Hall/SWITCH/SWITCH_program.o
  .data          0x00800060        0x0 ./Hall/LED/LED_program.o
+ .data          0x00800060        0x0 ./Hall/7_SEGMENT/_7SEGMENT_program.o
+ .data          0x00800060        0x0 ./Hall/7_SEGMENT/main.o
  .data          0x00800060        0x0 ./APP/WEEK2/TASK2/main.o
  .data          0x00800060        0x0 ./APP/WEEK2/TASK1/main.o
  .data          0x00800060        0x0 ./APP/WEEK1/snake/main.o
@@ -361,58 +376,58 @@ LOAD d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5
  .data          0x00800068        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_unpack_sf.o)
  .data          0x00800068        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fpcmp_parts_sf.o)
  *(.data*)
+ .data._7SEGMENTNUM
+                0x00800068        0xa ./Hall/7_SEGMENT/_7SEGMENT_program.o
  *(.rodata)
  *(.rodata*)
- .rodata.C.1.1319
-                0x00800068        0xc ./APP/WEEK2/TASK1/main.o
- .rodata.C.0.1315
-                0x00800074        0x6 ./APP/WEEK2/TASK1/main.o
  *(.gnu.linkonce.d*)
-                0x0080007a                . = ALIGN (0x2)
-                0x0080007a                _edata = .
-                0x0080007a                PROVIDE (__data_end, .)
+                0x00800072                . = ALIGN (0x2)
+                0x00800072                _edata = .
+                0x00800072                PROVIDE (__data_end, .)
 
-.bss            0x0080007a        0x1
-                0x0080007a                PROVIDE (__bss_start, .)
+.bss            0x00800072        0x1
+                0x00800072                PROVIDE (__bss_start, .)
  *(.bss)
- .bss           0x0080007a        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
- .bss           0x0080007a        0x0 ./MCAL/DIO/DIO_program.o
- .bss           0x0080007a        0x0 ./Hall/SWITCH/SWITCH_program.o
- .bss           0x0080007a        0x0 ./Hall/LED/LED_program.o
- .bss           0x0080007a        0x0 ./APP/WEEK2/TASK2/main.o
- .bss           0x0080007a        0x0 ./APP/WEEK2/TASK1/main.o
- .bss           0x0080007a        0x0 ./APP/WEEK1/snake/main.o
- .bss           0x0080007a        0x0 ./APP/WEEK1/led/main.o
- .bss           0x0080007a        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .bss           0x0080007a        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .bss           0x0080007a        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
- .bss           0x0080007a        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o)
- .bss           0x0080007a        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_addsub_sf.o)
- .bss           0x0080007a        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mul_sf.o)
- .bss           0x0080007a        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_gt_sf.o)
- .bss           0x0080007a        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_ge_sf.o)
- .bss           0x0080007a        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_lt_sf.o)
- .bss           0x0080007a        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_sf_to_si.o)
- .bss           0x0080007a        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_thenan_sf.o)
- .bss           0x0080007a        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
- .bss           0x0080007a        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
- .bss           0x0080007a        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_pack_sf.o)
- .bss           0x0080007a        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_unpack_sf.o)
- .bss           0x0080007a        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fpcmp_parts_sf.o)
+ .bss           0x00800072        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ .bss           0x00800072        0x0 ./MCAL/DIO/DIO_program.o
+ .bss           0x00800072        0x0 ./Hall/SWITCH/SWITCH_program.o
+ .bss           0x00800072        0x0 ./Hall/LED/LED_program.o
+ .bss           0x00800072        0x0 ./Hall/7_SEGMENT/_7SEGMENT_program.o
+ .bss           0x00800072        0x0 ./Hall/7_SEGMENT/main.o
+ .bss           0x00800072        0x0 ./APP/WEEK2/TASK2/main.o
+ .bss           0x00800072        0x0 ./APP/WEEK2/TASK1/main.o
+ .bss           0x00800072        0x0 ./APP/WEEK1/snake/main.o
+ .bss           0x00800072        0x0 ./APP/WEEK1/led/main.o
+ .bss           0x00800072        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .bss           0x00800072        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .bss           0x00800072        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .bss           0x00800072        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o)
+ .bss           0x00800072        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_addsub_sf.o)
+ .bss           0x00800072        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mul_sf.o)
+ .bss           0x00800072        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_gt_sf.o)
+ .bss           0x00800072        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_ge_sf.o)
+ .bss           0x00800072        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_lt_sf.o)
+ .bss           0x00800072        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_sf_to_si.o)
+ .bss           0x00800072        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_thenan_sf.o)
+ .bss           0x00800072        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
+ .bss           0x00800072        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
+ .bss           0x00800072        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_pack_sf.o)
+ .bss           0x00800072        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_unpack_sf.o)
+ .bss           0x00800072        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fpcmp_parts_sf.o)
  *(.bss*)
  *(COMMON)
- COMMON         0x0080007a        0x1 ./Hall/SWITCH/SWITCH_program.o
-                0x0080007a                SWITCH_state
-                0x0080007b                PROVIDE (__bss_end, .)
-                0x0000183c                __data_load_start = LOADADDR (.data)
-                0x00001856                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00800072        0x1 ./Hall/SWITCH/SWITCH_program.o
+                0x00800072                SWITCH_state
+                0x00800073                PROVIDE (__bss_end, .)
+                0x00001ae8                __data_load_start = LOADADDR (.data)
+                0x00001afa                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080007b        0x0
-                0x0080007b                PROVIDE (__noinit_start, .)
+.noinit         0x00800073        0x0
+                0x00800073                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x0080007b                PROVIDE (__noinit_end, .)
-                0x0080007b                _end = .
-                0x0080007b                PROVIDE (__heap_start, .)
+                0x00800073                PROVIDE (__noinit_end, .)
+                0x00800073                _end = .
+                0x00800073                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -430,25 +445,29 @@ LOAD d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5
 .signature
  *(.signature*)
 
-.stab           0x00000000     0x1584
+.stab           0x00000000     0x1914
  *(.stab)
  .stab          0x00000000      0x678 ./MCAL/DIO/DIO_program.o
  .stab          0x00000678      0x5a0 ./Hall/SWITCH/SWITCH_program.o
                                 0x5ac (size before relaxing)
  .stab          0x00000c18      0x390 ./Hall/LED/LED_program.o
                                 0x39c (size before relaxing)
- .stab          0x00000fa8       0xd8 ./APP/WEEK2/TASK2/main.o
+ .stab          0x00000fa8      0x504 ./Hall/7_SEGMENT/_7SEGMENT_program.o
+                                0x510 (size before relaxing)
+ .stab          0x000014ac      0x108 ./Hall/7_SEGMENT/main.o
+                                0x114 (size before relaxing)
+ .stab          0x000015b4       0xd8 ./APP/WEEK2/TASK2/main.o
                                  0xe4 (size before relaxing)
- .stab          0x00001080      0x354 ./APP/WEEK2/TASK1/main.o
-                                0x4ec (size before relaxing)
- .stab          0x000013d4       0xd8 ./APP/WEEK1/snake/main.o
+ .stab          0x0000168c       0xd8 ./APP/WEEK2/TASK1/main.o
                                  0xe4 (size before relaxing)
- .stab          0x000014ac       0xd8 ./APP/WEEK1/led/main.o
+ .stab          0x00001764       0xd8 ./APP/WEEK1/snake/main.o
+                                 0xe4 (size before relaxing)
+ .stab          0x0000183c       0xd8 ./APP/WEEK1/led/main.o
                                  0xe4 (size before relaxing)
 
-.stabstr        0x00000000      0xd4d
+.stabstr        0x00000000      0xe22
  *(.stabstr)
- .stabstr       0x00000000      0xd4d ./MCAL/DIO/DIO_program.o
+ .stabstr       0x00000000      0xe22 ./MCAL/DIO/DIO_program.o
 
 .stab.excl
  *(.stab.excl)
