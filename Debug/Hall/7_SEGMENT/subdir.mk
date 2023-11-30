@@ -4,16 +4,13 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../Hall/7_SEGMENT/_7SEGMENT_program.c \
-../Hall/7_SEGMENT/main.c 
+../Hall/7_SEGMENT/_7SEGMENT_program.c 
 
 OBJS += \
-./Hall/7_SEGMENT/_7SEGMENT_program.o \
-./Hall/7_SEGMENT/main.o 
+./Hall/7_SEGMENT/_7SEGMENT_program.o 
 
 C_DEPS += \
-./Hall/7_SEGMENT/_7SEGMENT_program.d \
-./Hall/7_SEGMENT/main.d 
+./Hall/7_SEGMENT/_7SEGMENT_program.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

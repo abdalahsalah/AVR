@@ -8,9 +8,6 @@
 #ifndef HALL_LED_LED_INTERFACE_H_
 #define HALL_LED_LED_INTERFACE_H_
 
-#include "../../MCAL/DIO/DIO_interface.h"  // Include DIO configurations for GPIO control
-#include "LED_configration.h"  // Include the LED interface for function declarations
-
 // Definitions for LED connection types
 #define LED_u8SourceConnection 1
 #define LED_u8SinkConnection 0

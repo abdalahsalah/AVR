@@ -9,8 +9,7 @@
 #ifndef HALL_7_SEGMENT__7SEGMENT_INTERFACE_H_
 #define HALL_7_SEGMENT__7SEGMENT_INTERFACE_H_
 
-#include "../../MCAL/DIO/DIO_interface.h" // Include DIO configurations for GPIO control
-#include "_7SEGMENT_configration.h"
+
 
 /* Constants for common cathode and common anode connection types */
 #define _7SEGMENT_u8COMMONCATHODE 1

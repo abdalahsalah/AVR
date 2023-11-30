@@ -8,9 +8,6 @@
 #ifndef HALL_SWITCH_SWITCH_INTERFACE_H_
 #define HALL_SWITCH_SWITCH_INTERFACE_H_
 
-#include "../../MCAL/DIO/DIO_interface.h"  // Include DIO configurations for GPIO control
-#include "SWITCH_configration.h"  // Include the LED interface for function declarations
-
 // Define the clock frequency for delay functions
 #define F_CPU 8000000  // Example frequency, adjust as needed
 

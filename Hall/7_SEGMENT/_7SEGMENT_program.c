@@ -8,6 +8,7 @@
  */
 #include "../../lib/STD_TYPES.h"
 #include "../../lib/BIT_MATH.h"
+#include "../../MCAL/DIO/DIO_interface.h"
 #include "_7SEGMENT_interface.h"
 
 /* Lookup table for segment patterns corresponding to each number */

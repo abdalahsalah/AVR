@@ -8,6 +8,7 @@
 
 #include "../../lib/STD_TYPES.h"
 #include "../../lib/BIT_MATH.h"
+#include "../../MCAL/DIO/DIO_interface.h"
 #include "SWITCH_interface.h"
 #include <util/delay.h>
 

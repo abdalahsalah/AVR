@@ -8,10 +8,14 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include MCAL/PORT/subdir.mk
 -include MCAL/DIO/subdir.mk
 -include Hall/SWITCH/subdir.mk
 -include Hall/LED/subdir.mk
+-include Hall/KAYPAD/subdir.mk
+-include Hall/CLCD/subdir.mk
 -include Hall/7_SEGMENT/subdir.mk
+-include APP/projects/calc/subdir.mk
 -include APP/WEEK2/TASK2/subdir.mk
 -include APP/WEEK2/TASK1/subdir.mk
 -include APP/WEEK1/snake/subdir.mk

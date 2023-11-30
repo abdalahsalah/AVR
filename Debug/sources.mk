@@ -24,8 +24,12 @@ APP/WEEK1/led \
 APP/WEEK1/snake \
 APP/WEEK2/TASK1 \
 APP/WEEK2/TASK2 \
+APP/projects/calc \
 Hall/7_SEGMENT \
+Hall/CLCD \
+Hall/KAYPAD \
 Hall/LED \
 Hall/SWITCH \
 MCAL/DIO \
+MCAL/PORT \
 
