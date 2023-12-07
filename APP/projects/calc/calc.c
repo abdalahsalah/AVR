@@ -31,10 +31,12 @@ void start(void)
 	CLCD_voidGoToXY(1,0);
 	CLCD_voidSendString("start");
 }
-void clearcalc(s32 num1,s32 num2, s32 operation ,s32 prod, s32 num_flag)
-{
-	CLCD_voidClearLCD();
-	num1=0;num2=0;operation=0;prod=0;num_flag=0;
+void clearCalculatorState(s32 *num1, s32 *num2, s32 *operation, s32 *prod, s32 *num_flag) {
+    *num1 = 0;
+    *num2 = 0;
+    *operation = 0;
+    *prod = 0;
+    *num_flag = 0;
 }
 
 
