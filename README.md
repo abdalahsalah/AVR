@@ -15,9 +15,11 @@ The project is organized into several directories:
 - **Hall**: Higher-level modules.
   - **CLCD**: Interface for character LCD.
   - **KAYPAD**: Interface and configuration for the keypad.
-
-- **main.c**: The main application source code for the calculator.
-
+- **App**: Application layer containing calculator logic.
+  - **calc.h**: Header file defining the calculator state and interface.
+  - **calc.c**: Source file containing the calculator logic and operations.
+  - **main.c**: The main application source code for the calculator.
+  
 ## Build and Flashing
 
 The project can be built using an AVR toolchain. Make sure to configure the Makefile appropriately for your toolchain and programmer. You can then use the provided Makefile to build the project and flash it onto your AVR microcontroller.
