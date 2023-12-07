@@ -43,8 +43,4 @@ The calculator supports basic arithmetic operations (+, -, *, /) and can handle 
 
 The calculator project includes a robust error-handling mechanism, especially for division by zero. If a division by zero is detected, an error message is displayed on the LCD, and the calculator state is cleared.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 Feel free to contribute, report issues, or suggest improvements. Happy coding!
