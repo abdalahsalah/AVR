@@ -1,0 +1,1 @@
+APP/WEEK1/TEST/main.o APP/WEEK1/TEST/main.o: ../APP/WEEK1/TEST/main.c

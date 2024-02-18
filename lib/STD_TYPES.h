@@ -29,5 +29,8 @@ typedef float                 f32;
 typedef double                f64;
 
 #define  NULL 0
+#define  OK   0
+#define  NOK  1
+#define  NULL_POINTER  2
 
 #endif /* LIB_STD_TYPES_H_ */
