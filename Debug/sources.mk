@@ -29,9 +29,11 @@ APP/projects/PingPong \
 APP/projects/calc \
 Hall/7_SEGMENT \
 Hall/CLCD \
+Hall/DAC \
 Hall/KAYPAD \
 Hall/LED \
 Hall/SWITCH \
+MCAL/ADC \
 MCAL/DIO \
 MCAL/EXTI \
 MCAL/GIE \

@@ -19,7 +19,7 @@ void start(void)
 {
 	PORT_voidInit();
 	CLCD_voidInit();
-	CLCD_voidSendString("welcome !");
+	CLCD_voidSendString("welcome ");
 	_delay_ms(500);
 	CLCD_voidClearLCD();
 	CLCD_voidSendString("PingPong");

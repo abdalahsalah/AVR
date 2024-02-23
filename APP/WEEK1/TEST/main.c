@@ -9,32 +9,28 @@
 #include "../../../lib/std_types.h"
 #include "../../../MCAL/PORT/PORT_interface.h"
 #include "../../../MCAL/DIO/DIO_interface.h"
-#include "../../../MCAL/GIE/GIE_interface.h"
-#include "../../../MCAL/EXTI/EXTI_interface.h"
+#include "../../../MCAL/ADC/ADC_interface.h"
+#include "../../../Hall/CLCD/CLCD_interface.h"
+#include <util/delay.h>
 
-void int0_isr(void);
-void int1_isr(void);
 void main(void)
 {
 	PORT_voidInit();
-	EXTI_voidInt0Init();
-	EXTI_voidInt1Init();
-	EXTI_u8INT0Setcallback(int0_isr);
-	EXTI_u8INT1Setcallback(int1_isr);
-	GIE_voidEnable();
-
+	CLCD_voidInit();
+	CLCD_voidSendString("ABD");
+	ADC_voidInit();
+	u8 local_u8ADCReading;
+	u16 millivolt;
 	while(1)
 	{
 
-	}
-}
+		local_u8ADCReading=ADC_GetChannelReading(0);
+		millivolt=(u16)((u32)local_u8ADCReading*5000UL)/256UL;
+		CLCD_voidDisplayNumber(millivolt/10);
+		_delay_ms(500);
+		CLCD_voidClearLCD();
 
-void int0_isr(void)
-{
-	DIO_SetPinValue(DIO_u8PORTA,DIO_u8PIN0,DIO_u8PIN_HIGH);
-}
-void int1_isr(void)
-{
-	DIO_SetPinValue(DIO_u8PORTA,DIO_u8PIN1,DIO_u8PIN_HIGH);
+
+	}
 }
 

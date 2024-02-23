@@ -12,9 +12,11 @@ RM := rm -rf
 -include MCAL/GIE/subdir.mk
 -include MCAL/EXTI/subdir.mk
 -include MCAL/DIO/subdir.mk
+-include MCAL/ADC/subdir.mk
 -include Hall/SWITCH/subdir.mk
 -include Hall/LED/subdir.mk
 -include Hall/KAYPAD/subdir.mk
+-include Hall/DAC/subdir.mk
 -include Hall/CLCD/subdir.mk
 -include Hall/7_SEGMENT/subdir.mk
 -include APP/projects/calc/subdir.mk
