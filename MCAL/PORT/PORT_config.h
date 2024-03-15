@@ -12,7 +12,7 @@
 
 //PORTA
 
-#define PORTA_PIN0_DIR            0
+#define PORTA_PIN0_DIR            1
 #define PORTA_PIN1_DIR            0
 #define PORTA_PIN2_DIR            0
 #define PORTA_PIN3_DIR            0
@@ -59,7 +59,7 @@
  */
 //PORTA
 
-#define PORTA_PIN0_INIT_VALUE     0
+#define PORTA_PIN0_INIT_VALUE     1
 #define PORTA_PIN1_INIT_VALUE     0
 #define PORTA_PIN2_INIT_VALUE     0
 #define PORTA_PIN3_INIT_VALUE     0

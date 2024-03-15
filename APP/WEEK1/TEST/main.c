@@ -1,5 +1,6 @@
 /*
  * main.c
+
  *
  *  Created on: ???/???/????
  *      Author: user
@@ -7,30 +8,43 @@
 
 
 #include "../../../lib/std_types.h"
+#include "../../../lib/BIT_MATH.h"
 #include "../../../MCAL/PORT/PORT_interface.h"
 #include "../../../MCAL/DIO/DIO_interface.h"
-#include "../../../MCAL/ADC/ADC_interface.h"
-#include "../../../Hall/CLCD/CLCD_interface.h"
+#include "../../../MCAL/GIE/GIE_interface.h"
+#include "../../../MCAL/TIMERS/TIMER_interface.h"
 #include <util/delay.h>
-
+//void PWM(void);
 void main(void)
 {
+	u8 Local_u8counter=0;
 	PORT_voidInit();
-	CLCD_voidInit();
-	CLCD_voidSendString("ABD");
-	ADC_voidInit();
-	u8 local_u8ADCReading;
-	u16 millivolt;
+	TIMER0_voidInit();
+	TIMER0_outputfastpwmmode();
+	//TIMER0_u8Setcallback(&PWM);
+	//GIE_voidEnable();
 	while(1)
 	{
-
-		local_u8ADCReading=ADC_GetChannelReading(0);
-		millivolt=(u16)((u32)local_u8ADCReading*5000UL)/256UL;
-		CLCD_voidDisplayNumber(millivolt/10);
-		_delay_ms(500);
-		CLCD_voidClearLCD();
-
+		for(Local_u8counter=0;Local_u8counter<255;Local_u8counter++)
+		{
+			TIMER0_u8setcompmatchvalue(Local_u8counter);
+			_delay_ms(10);
+		}
 
 	}
 }
 
+/*void PWM(void)
+{
+	static u8 Local_u8counter=0;
+	Local_u8counter++;
+	if(Local_u8counter==30)
+	{
+		DIO_SetPinValue(DIO_u8PORTA,DIO_u8PIN0,DIO_u8PIN_LOW);
+	}
+	else if(Local_u8counter==60)
+	{
+		DIO_SetPinValue(DIO_u8PORTA,DIO_u8PIN0,DIO_u8PIN_HIGH);
+		Local_u8counter=0;
+	}
+}*/
