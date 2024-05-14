@@ -13,24 +13,30 @@
 #include "../../../MCAL/DIO/DIO_interface.h"
 #include "../../../MCAL/GIE/GIE_interface.h"
 #include "../../../MCAL/TIMERS/TIMER_interface.h"
+#include "../../../Hall/CLCD/CLCD_interface.h"
+#include "../../../MCAL/USART/USART_intrface.h"
 #include <util/delay.h>
 //void PWM(void);
 void main(void)
 {
-	u8 Local_u8counter=0;
 	PORT_voidInit();
-	TIMER0_voidInit();
-	TIMER0_outputfastpwmmode();
+	USART_init();
+
 	//TIMER0_u8Setcallback(&PWM);
 	//GIE_voidEnable();
 	while(1)
 	{
-		for(Local_u8counter=0;Local_u8counter<255;Local_u8counter++)
+		u8 data=USART_recive_data();
+		if(data=='1')
 		{
-			TIMER0_u8setcompmatchvalue(Local_u8counter);
-			_delay_ms(10);
+			DIO_SetPinValue(DIO_u8PORTA,DIO_u8PIN0,DIO_u8PIN_HIGH);
+		}
+		else if(data=='2')
+		{
+			DIO_SetPinValue(DIO_u8PORTA,DIO_u8PIN0,DIO_u8PIN_LOW);
 		}
 
+		USART_send_data('D');
 	}
 }
 
