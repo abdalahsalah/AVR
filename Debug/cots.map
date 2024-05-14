@@ -1,7 +1,11 @@
 Archive member included because of file (symbol)
 
+d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+                              ./APP/projects/calc/main.o (__mulsi3)
 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
                               ./Hall/CLCD/CLCD_program.o (__udivmodsi4)
+d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodsi4.o)
+                              ./APP/projects/calc/main.o (__divmodsi4)
 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
                               d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o (exit)
 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
@@ -51,7 +55,9 @@ Linker script and memory map
 LOAD d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
 LOAD ./MCAL/USART/USART_prog.o
 LOAD ./MCAL/TIMERS/TIMER_program.o
+LOAD ./MCAL/SPI/SPI.o
 LOAD ./MCAL/PORT/PORT_program.o
+LOAD ./MCAL/I2C/I2C.o
 LOAD ./MCAL/GIE/GIE_program.o
 LOAD ./MCAL/EXTI/EXTI_program.o
 LOAD ./MCAL/DIO/DIO_program.o
@@ -165,7 +171,7 @@ LOAD d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x20c8
+.text           0x00000000     0x3ef4
  *(.vectors)
  .vectors       0x00000000       0x54 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000000                __vectors
@@ -240,7 +246,9 @@ LOAD d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5
                 0x0000008e                __vector_20
  .text          0x00000092        0x0 ./MCAL/USART/USART_prog.o
  .text          0x00000092        0x0 ./MCAL/TIMERS/TIMER_program.o
+ .text          0x00000092        0x0 ./MCAL/SPI/SPI.o
  .text          0x00000092        0x0 ./MCAL/PORT/PORT_program.o
+ .text          0x00000092        0x0 ./MCAL/I2C/I2C.o
  .text          0x00000092        0x0 ./MCAL/GIE/GIE_program.o
  .text          0x00000092        0x0 ./MCAL/EXTI/EXTI_program.o
  .text          0x00000092        0x0 ./MCAL/DIO/DIO_program.o
@@ -260,7 +268,9 @@ LOAD d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5
  .text          0x00000092        0x0 ./APP/WEEK1/snake/main.o
  .text          0x00000092        0x0 ./APP/WEEK1/led/main.o
  .text          0x00000092        0x0 ./APP/WEEK1/TEST/main.o
+ .text          0x00000092        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
  .text          0x00000092        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+ .text          0x00000092        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodsi4.o)
  .text          0x00000092        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  .text          0x00000092        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
  .text          0x00000092        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
@@ -314,106 +324,172 @@ LOAD d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5
  .text.__vector_10
                 0x00000cda       0x66 ./MCAL/TIMERS/TIMER_program.o
                 0x00000cda                __vector_10
+ .text.SPI_InitMaster
+                0x00000d40       0x2a ./MCAL/SPI/SPI.o
+                0x00000d40                SPI_InitMaster
+ .text.SPI_InitSlave
+                0x00000d6a       0x2a ./MCAL/SPI/SPI.o
+                0x00000d6a                SPI_InitSlave
+ .text.SPI_SendByte
+                0x00000d94       0x32 ./MCAL/SPI/SPI.o
+                0x00000d94                SPI_SendByte
+ .text.SPI_ReceiveByte
+                0x00000dc6       0x2a ./MCAL/SPI/SPI.o
+                0x00000dc6                SPI_ReceiveByte
+ .text.SPI_SendString
+                0x00000df0       0x38 ./MCAL/SPI/SPI.o
+                0x00000df0                SPI_SendString
+ .text.SPI_ReceiveString
+                0x00000e28       0x86 ./MCAL/SPI/SPI.o
+                0x00000e28                SPI_ReceiveString
  .text.PORT_voidInit
-                0x00000d40       0x48 ./MCAL/PORT/PORT_program.o
-                0x00000d40                PORT_voidInit
+                0x00000eae       0x48 ./MCAL/PORT/PORT_program.o
+                0x00000eae                PORT_voidInit
+ .text.I2C_Init
+                0x00000ef6       0x3a ./MCAL/I2C/I2C.o
+                0x00000ef6                I2C_Init
+ .text.TWIStart
+                0x00000f30       0x20 ./MCAL/I2C/I2C.o
+                0x00000f30                TWIStart
+ .text.TWIStop  0x00000f50       0x16 ./MCAL/I2C/I2C.o
+                0x00000f50                TWIStop
+ .text.TWIWrite
+                0x00000f66       0x2e ./MCAL/I2C/I2C.o
+                0x00000f66                TWIWrite
+ .text.TWIReadACK
+                0x00000f94       0x26 ./MCAL/I2C/I2C.o
+                0x00000f94                TWIReadACK
+ .text.TWIReadNACK
+                0x00000fba       0x26 ./MCAL/I2C/I2C.o
+                0x00000fba                TWIReadNACK
+ .text.TWIGetStatus
+                0x00000fe0       0x1e ./MCAL/I2C/I2C.o
+                0x00000fe0                TWIGetStatus
  .text.GIE_voidEnable
-                0x00000d88       0x1c ./MCAL/GIE/GIE_program.o
-                0x00000d88                GIE_voidEnable
+                0x00000ffe       0x1c ./MCAL/GIE/GIE_program.o
+                0x00000ffe                GIE_voidEnable
  .text.GIE_voidDisable
-                0x00000da4       0x1c ./MCAL/GIE/GIE_program.o
-                0x00000da4                GIE_voidDisable
+                0x0000101a       0x1c ./MCAL/GIE/GIE_program.o
+                0x0000101a                GIE_voidDisable
  .text.EXTI_voidInt0Init
-                0x00000dc0       0x38 ./MCAL/EXTI/EXTI_program.o
-                0x00000dc0                EXTI_voidInt0Init
+                0x00001036       0x38 ./MCAL/EXTI/EXTI_program.o
+                0x00001036                EXTI_voidInt0Init
  .text.EXTI_voidInt1Init
-                0x00000df8       0x38 ./MCAL/EXTI/EXTI_program.o
-                0x00000df8                EXTI_voidInt1Init
+                0x0000106e       0x38 ./MCAL/EXTI/EXTI_program.o
+                0x0000106e                EXTI_voidInt1Init
  .text.EXTI_voidInt2Init
-                0x00000e30       0x2a ./MCAL/EXTI/EXTI_program.o
-                0x00000e30                EXTI_voidInt2Init
+                0x000010a6       0x2a ./MCAL/EXTI/EXTI_program.o
+                0x000010a6                EXTI_voidInt2Init
  .text.EXTI_u8INT0Setcallback
-                0x00000e5a       0x3a ./MCAL/EXTI/EXTI_program.o
-                0x00000e5a                EXTI_u8INT0Setcallback
+                0x000010d0       0x3a ./MCAL/EXTI/EXTI_program.o
+                0x000010d0                EXTI_u8INT0Setcallback
  .text.EXTI_u8INT1Setcallback
-                0x00000e94       0x3a ./MCAL/EXTI/EXTI_program.o
-                0x00000e94                EXTI_u8INT1Setcallback
+                0x0000110a       0x3a ./MCAL/EXTI/EXTI_program.o
+                0x0000110a                EXTI_u8INT1Setcallback
  .text.__vector_1
-                0x00000ece       0x66 ./MCAL/EXTI/EXTI_program.o
-                0x00000ece                __vector_1
+                0x00001144       0x66 ./MCAL/EXTI/EXTI_program.o
+                0x00001144                __vector_1
  .text.__vector_2
-                0x00000f34       0x66 ./MCAL/EXTI/EXTI_program.o
-                0x00000f34                __vector_2
+                0x000011aa       0x66 ./MCAL/EXTI/EXTI_program.o
+                0x000011aa                __vector_2
  .text.__vector_3
-                0x00000f9a       0x66 ./MCAL/EXTI/EXTI_program.o
-                0x00000f9a                __vector_3
+                0x00001210       0x66 ./MCAL/EXTI/EXTI_program.o
+                0x00001210                __vector_3
  .text.DIO_SetPinDirection
-                0x00001000      0x224 ./MCAL/DIO/DIO_program.o
-                0x00001000                DIO_SetPinDirection
+                0x00001276      0x224 ./MCAL/DIO/DIO_program.o
+                0x00001276                DIO_SetPinDirection
  .text.DIO_SetPortDirection
-                0x00001224       0x90 ./MCAL/DIO/DIO_program.o
-                0x00001224                DIO_SetPortDirection
+                0x0000149a       0x90 ./MCAL/DIO/DIO_program.o
+                0x0000149a                DIO_SetPortDirection
  .text.DIO_SetPinValue
-                0x000012b4      0x224 ./MCAL/DIO/DIO_program.o
-                0x000012b4                DIO_SetPinValue
+                0x0000152a      0x224 ./MCAL/DIO/DIO_program.o
+                0x0000152a                DIO_SetPinValue
  .text.DIO_SetPortValue
-                0x000014d8       0x90 ./MCAL/DIO/DIO_program.o
-                0x000014d8                DIO_SetPortValue
+                0x0000174e       0x90 ./MCAL/DIO/DIO_program.o
+                0x0000174e                DIO_SetPortValue
  .text.DIO_GetPinValue
-                0x00001568      0x130 ./MCAL/DIO/DIO_program.o
-                0x00001568                DIO_GetPinValue
+                0x000017de      0x130 ./MCAL/DIO/DIO_program.o
+                0x000017de                DIO_GetPinValue
  .text.ADC_voidInit
-                0x00001698       0x62 ./MCAL/ADC/ADC_program.o
-                0x00001698                ADC_voidInit
+                0x0000190e       0x62 ./MCAL/ADC/ADC_program.o
+                0x0000190e                ADC_voidInit
  .text.ADC_GetChannelReading
-                0x000016fa       0x6a ./MCAL/ADC/ADC_program.o
-                0x000016fa                ADC_GetChannelReading
+                0x00001970       0x6a ./MCAL/ADC/ADC_program.o
+                0x00001970                ADC_GetChannelReading
  .text.KPD_u8GetPressedkey
-                0x00001764       0xf0 ./Hall/KAYPAD/KPD_program.o
-                0x00001764                KPD_u8GetPressedkey
+                0x000019da       0xf0 ./Hall/KAYPAD/KPD_program.o
+                0x000019da                KPD_u8GetPressedkey
  .text.DAC_voidAnalogvalue
-                0x00001854       0x40 ./Hall/DAC/DAC_program.o
-                0x00001854                DAC_voidAnalogvalue
+                0x00001aca       0x40 ./Hall/DAC/DAC_program.o
+                0x00001aca                DAC_voidAnalogvalue
  .text.CLCD_voidSendCommand
-                0x00001894      0x13c ./Hall/CLCD/CLCD_program.o
-                0x00001894                CLCD_voidSendCommand
+                0x00001b0a      0x13c ./Hall/CLCD/CLCD_program.o
+                0x00001b0a                CLCD_voidSendCommand
  .text.CLCD_voidSendData
-                0x000019d0      0x13c ./Hall/CLCD/CLCD_program.o
-                0x000019d0                CLCD_voidSendData
+                0x00001c46      0x13c ./Hall/CLCD/CLCD_program.o
+                0x00001c46                CLCD_voidSendData
  .text.CLCD_voidInit
-                0x00001b0c      0x11c ./Hall/CLCD/CLCD_program.o
-                0x00001b0c                CLCD_voidInit
+                0x00001d82      0x11c ./Hall/CLCD/CLCD_program.o
+                0x00001d82                CLCD_voidInit
  .text.CLCD_voidSendString
-                0x00001c28       0x54 ./Hall/CLCD/CLCD_program.o
-                0x00001c28                CLCD_voidSendString
+                0x00001e9e       0x54 ./Hall/CLCD/CLCD_program.o
+                0x00001e9e                CLCD_voidSendString
  .text.CLCD_voidGoToXY
-                0x00001c7c       0x3c ./Hall/CLCD/CLCD_program.o
-                0x00001c7c                CLCD_voidGoToXY
+                0x00001ef2       0x3c ./Hall/CLCD/CLCD_program.o
+                0x00001ef2                CLCD_voidGoToXY
  .text.CLCD_voidDisplaySpecialCharacter
-                0x00001cb8       0x82 ./Hall/CLCD/CLCD_program.o
-                0x00001cb8                CLCD_voidDisplaySpecialCharacter
+                0x00001f2e       0x82 ./Hall/CLCD/CLCD_program.o
+                0x00001f2e                CLCD_voidDisplaySpecialCharacter
  .text.CLCD_voidDisplayNumber
-                0x00001d3a      0x282 ./Hall/CLCD/CLCD_program.o
-                0x00001d3a                CLCD_voidDisplayNumber
+                0x00001fb0      0x282 ./Hall/CLCD/CLCD_program.o
+                0x00001fb0                CLCD_voidDisplayNumber
  .text.CLCD_voidClearLCD
-                0x00001fbc       0x14 ./Hall/CLCD/CLCD_program.o
-                0x00001fbc                CLCD_voidClearLCD
- .text.main     0x00001fd0       0x42 ./APP/WEEK1/TEST/main.o
-                0x00001fd0                main
- .text.libgcc   0x00002012       0x44 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
-                0x00002012                __udivmodsi4
- .text.libgcc   0x00002056        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x00002056        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .text.libgcc   0x00002056        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
- .text.libgcc   0x00002056       0x38 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
-                0x00002056                __prologue_saves__
- .text.libgcc   0x0000208e       0x36 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
-                0x0000208e                __epilogue_restores__
-                0x000020c4                . = ALIGN (0x2)
+                0x00002232       0x14 ./Hall/CLCD/CLCD_program.o
+                0x00002232                CLCD_voidClearLCD
+ .text.start    0x00002246      0x326 ./APP/projects/calc/calc.o
+                0x00002246                start
+ .text.clearCalculatorState
+                0x0000256c       0x90 ./APP/projects/calc/calc.o
+                0x0000256c                clearCalculatorState
+ .text.main     0x000025fc      0x4ea ./APP/projects/calc/main.o
+                0x000025fc                main
+ .text.start    0x00002ae6      0x21e ./APP/projects/PingPong/app.o
+ .text.handling
+                0x00002d04      0x358 ./APP/projects/PingPong/app.o
+                0x00002d04                handling
+ .text.gameinit
+                0x0000305c      0x35a ./APP/projects/PingPong/app.o
+                0x0000305c                gameinit
+ .text.ISR_INT0
+                0x000033b6      0x166 ./APP/projects/PingPong/app.o
+                0x000033b6                ISR_INT0
+ .text.ISR_INT1
+                0x0000351c      0x166 ./APP/projects/PingPong/app.o
+                0x0000351c                ISR_INT1
+ .text.main     0x00003682       0x36 ./APP/projects/PingPong/main.o
+ .text.main     0x000036b8      0x124 ./APP/WEEK2/TASK2/main.o
+ .text.main     0x000037dc       0xdc ./APP/WEEK2/TASK1/main.o
+ .text.main     0x000038b8      0x29a ./APP/WEEK1/snake/main.o
+ .text.main     0x00003b52      0x236 ./APP/WEEK1/led/main.o
+ .text.main     0x00003d88       0x42 ./APP/WEEK1/TEST/main.o
+ .text.libgcc   0x00003dca       0x3e d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+                0x00003dca                __mulsi3
+ .text.libgcc   0x00003e08       0x44 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+                0x00003e08                __udivmodsi4
+ .text.libgcc   0x00003e4c       0x36 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodsi4.o)
+                0x00003e4c                __divmodsi4
+ .text.libgcc   0x00003e82        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00003e82        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00003e82        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00003e82       0x38 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
+                0x00003e82                __prologue_saves__
+ .text.libgcc   0x00003eba       0x36 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
+                0x00003eba                __epilogue_restores__
+                0x00003ef0                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000020c4        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x000020c4                exit
-                0x000020c4                _exit
+ .fini9         0x00003ef0        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00003ef0                exit
+                0x00003ef0                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -432,17 +508,19 @@ LOAD d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000020c4        0x4 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x00003ef0        0x4 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x000020c8                _etext = .
+                0x00003ef4                _etext = .
 
-.data           0x00800060       0x20 load address 0x000020c8
+.data           0x00800060       0xec load address 0x00003ef4
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
  .data          0x00800060        0x0 ./MCAL/USART/USART_prog.o
  .data          0x00800060        0x0 ./MCAL/TIMERS/TIMER_program.o
+ .data          0x00800060        0x0 ./MCAL/SPI/SPI.o
  .data          0x00800060        0x0 ./MCAL/PORT/PORT_program.o
+ .data          0x00800060        0x0 ./MCAL/I2C/I2C.o
  .data          0x00800060        0x0 ./MCAL/GIE/GIE_program.o
  .data          0x00800060        0x0 ./MCAL/EXTI/EXTI_program.o
  .data          0x00800060        0x0 ./MCAL/DIO/DIO_program.o
@@ -453,113 +531,140 @@ LOAD d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5
  .data          0x00800060        0x0 ./Hall/DAC/DAC_program.o
  .data          0x00800060        0x0 ./Hall/CLCD/CLCD_program.o
  .data          0x00800060        0x0 ./Hall/7_SEGMENT/_7SEGMENT_program.o
- .data          0x00800060        0x0 ./APP/projects/calc/calc.o
- .data          0x00800060        0x0 ./APP/projects/calc/main.o
- .data          0x00800060        0x0 ./APP/projects/PingPong/app.o
- .data          0x00800060        0x0 ./APP/projects/PingPong/main.o
- .data          0x00800060        0x0 ./APP/WEEK2/TASK2/main.o
- .data          0x00800060        0x0 ./APP/WEEK2/TASK1/main.o
- .data          0x00800060        0x0 ./APP/WEEK1/snake/main.o
- .data          0x00800060        0x0 ./APP/WEEK1/led/main.o
- .data          0x00800060        0x0 ./APP/WEEK1/TEST/main.o
- .data          0x00800060        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
- .data          0x00800060        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .data          0x00800060        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .data          0x00800060        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
- .data          0x00800060        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o)
- .data          0x00800060        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_addsub_sf.o)
- .data          0x00800060        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mul_sf.o)
- .data          0x00800060        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_gt_sf.o)
- .data          0x00800060        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_ge_sf.o)
- .data          0x00800060        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_lt_sf.o)
- .data          0x00800060        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_sf_to_si.o)
- .data          0x00800060        0x8 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_thenan_sf.o)
-                0x00800060                __thenan_sf
- .data          0x00800068        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
- .data          0x00800068        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
- .data          0x00800068        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_pack_sf.o)
- .data          0x00800068        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_unpack_sf.o)
- .data          0x00800068        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fpcmp_parts_sf.o)
+ .data          0x00800060       0x45 ./APP/projects/calc/calc.o
+ .data          0x008000a5       0x18 ./APP/projects/calc/main.o
+ .data          0x008000bd       0x51 ./APP/projects/PingPong/app.o
+ .data          0x0080010e        0x0 ./APP/projects/PingPong/main.o
+ .data          0x0080010e        0x0 ./APP/WEEK2/TASK2/main.o
+ .data          0x0080010e        0x0 ./APP/WEEK2/TASK1/main.o
+ .data          0x0080010e        0x0 ./APP/WEEK1/snake/main.o
+ .data          0x0080010e        0x0 ./APP/WEEK1/led/main.o
+ .data          0x0080010e        0x0 ./APP/WEEK1/TEST/main.o
+ .data          0x0080010e        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+ .data          0x0080010e        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+ .data          0x0080010e        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodsi4.o)
+ .data          0x0080010e        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .data          0x0080010e        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .data          0x0080010e        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .data          0x0080010e        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o)
+ .data          0x0080010e        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_addsub_sf.o)
+ .data          0x0080010e        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mul_sf.o)
+ .data          0x0080010e        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_gt_sf.o)
+ .data          0x0080010e        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_ge_sf.o)
+ .data          0x0080010e        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_lt_sf.o)
+ .data          0x0080010e        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_sf_to_si.o)
+ .data          0x0080010e        0x8 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_thenan_sf.o)
+                0x0080010e                __thenan_sf
+ .data          0x00800116        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
+ .data          0x00800116        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
+ .data          0x00800116        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_pack_sf.o)
+ .data          0x00800116        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_unpack_sf.o)
+ .data          0x00800116        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fpcmp_parts_sf.o)
  *(.data*)
  .data.Local_u8KPDROWSArr.1288
-                0x00800068        0x4 ./Hall/KAYPAD/KPD_program.o
+                0x00800116        0x4 ./Hall/KAYPAD/KPD_program.o
  .data.Local_u8KPDColumnArr.1287
-                0x0080006c        0x4 ./Hall/KAYPAD/KPD_program.o
+                0x0080011a        0x4 ./Hall/KAYPAD/KPD_program.o
  .data.Local_u8KPDArr.1286
-                0x00800070       0x10 ./Hall/KAYPAD/KPD_program.o
+                0x0080011e       0x10 ./Hall/KAYPAD/KPD_program.o
+ .data.turns    0x0080012e        0x1 ./APP/projects/PingPong/app.o
+                0x0080012e                turns
+ .data.col_ball
+                0x0080012f        0x1 ./APP/projects/PingPong/app.o
+                0x0080012f                col_ball
  *(.rodata)
  *(.rodata*)
+ .rodata.C.0.1289
+                0x00800130        0xa ./APP/WEEK2/TASK2/main.o
+ .rodata.C.0.1302
+                0x0080013a        0xf ./APP/WEEK1/snake/main.o
+ .rodata.C.0.1294
+                0x00800149        0x3 ./APP/WEEK1/led/main.o
  *(.gnu.linkonce.d*)
-                0x00800080                . = ALIGN (0x2)
-                0x00800080                _edata = .
-                0x00800080                PROVIDE (__data_end, .)
+                0x0080014c                . = ALIGN (0x2)
+                0x0080014c                _edata = .
+                0x0080014c                PROVIDE (__data_end, .)
 
-.bss            0x00800080        0x8
-                0x00800080                PROVIDE (__bss_start, .)
+.bss            0x0080014c        0xd
+                0x0080014c                PROVIDE (__bss_start, .)
  *(.bss)
- .bss           0x00800080        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
- .bss           0x00800080        0x0 ./MCAL/USART/USART_prog.o
- .bss           0x00800080        0x0 ./MCAL/TIMERS/TIMER_program.o
- .bss           0x00800080        0x0 ./MCAL/PORT/PORT_program.o
- .bss           0x00800080        0x0 ./MCAL/GIE/GIE_program.o
- .bss           0x00800080        0x0 ./MCAL/EXTI/EXTI_program.o
- .bss           0x00800080        0x0 ./MCAL/DIO/DIO_program.o
- .bss           0x00800080        0x0 ./MCAL/ADC/ADC_program.o
- .bss           0x00800080        0x0 ./Hall/SWITCH/SWITCH_program.o
- .bss           0x00800080        0x0 ./Hall/LED/LED_program.o
- .bss           0x00800080        0x0 ./Hall/KAYPAD/KPD_program.o
- .bss           0x00800080        0x0 ./Hall/DAC/DAC_program.o
- .bss           0x00800080        0x0 ./Hall/CLCD/CLCD_program.o
- .bss           0x00800080        0x0 ./Hall/7_SEGMENT/_7SEGMENT_program.o
- .bss           0x00800080        0x0 ./APP/projects/calc/calc.o
- .bss           0x00800080        0x0 ./APP/projects/calc/main.o
- .bss           0x00800080        0x0 ./APP/projects/PingPong/app.o
- .bss           0x00800080        0x0 ./APP/projects/PingPong/main.o
- .bss           0x00800080        0x0 ./APP/WEEK2/TASK2/main.o
- .bss           0x00800080        0x0 ./APP/WEEK2/TASK1/main.o
- .bss           0x00800080        0x0 ./APP/WEEK1/snake/main.o
- .bss           0x00800080        0x0 ./APP/WEEK1/led/main.o
- .bss           0x00800080        0x0 ./APP/WEEK1/TEST/main.o
- .bss           0x00800080        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
- .bss           0x00800080        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .bss           0x00800080        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
- .bss           0x00800080        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
- .bss           0x00800080        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o)
- .bss           0x00800080        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_addsub_sf.o)
- .bss           0x00800080        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mul_sf.o)
- .bss           0x00800080        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_gt_sf.o)
- .bss           0x00800080        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_ge_sf.o)
- .bss           0x00800080        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_lt_sf.o)
- .bss           0x00800080        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_sf_to_si.o)
- .bss           0x00800080        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_thenan_sf.o)
- .bss           0x00800080        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
- .bss           0x00800080        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
- .bss           0x00800080        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_pack_sf.o)
- .bss           0x00800080        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_unpack_sf.o)
- .bss           0x00800080        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fpcmp_parts_sf.o)
+ .bss           0x0080014c        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
+ .bss           0x0080014c        0x0 ./MCAL/USART/USART_prog.o
+ .bss           0x0080014c        0x0 ./MCAL/TIMERS/TIMER_program.o
+ .bss           0x0080014c        0x0 ./MCAL/SPI/SPI.o
+ .bss           0x0080014c        0x0 ./MCAL/PORT/PORT_program.o
+ .bss           0x0080014c        0x0 ./MCAL/I2C/I2C.o
+ .bss           0x0080014c        0x0 ./MCAL/GIE/GIE_program.o
+ .bss           0x0080014c        0x0 ./MCAL/EXTI/EXTI_program.o
+ .bss           0x0080014c        0x0 ./MCAL/DIO/DIO_program.o
+ .bss           0x0080014c        0x0 ./MCAL/ADC/ADC_program.o
+ .bss           0x0080014c        0x0 ./Hall/SWITCH/SWITCH_program.o
+ .bss           0x0080014c        0x0 ./Hall/LED/LED_program.o
+ .bss           0x0080014c        0x0 ./Hall/KAYPAD/KPD_program.o
+ .bss           0x0080014c        0x0 ./Hall/DAC/DAC_program.o
+ .bss           0x0080014c        0x0 ./Hall/CLCD/CLCD_program.o
+ .bss           0x0080014c        0x0 ./Hall/7_SEGMENT/_7SEGMENT_program.o
+ .bss           0x0080014c        0x0 ./APP/projects/calc/calc.o
+ .bss           0x0080014c        0x0 ./APP/projects/calc/main.o
+ .bss           0x0080014c        0x0 ./APP/projects/PingPong/app.o
+ .bss           0x0080014c        0x0 ./APP/projects/PingPong/main.o
+ .bss           0x0080014c        0x0 ./APP/WEEK2/TASK2/main.o
+ .bss           0x0080014c        0x0 ./APP/WEEK2/TASK1/main.o
+ .bss           0x0080014c        0x0 ./APP/WEEK1/snake/main.o
+ .bss           0x0080014c        0x0 ./APP/WEEK1/led/main.o
+ .bss           0x0080014c        0x0 ./APP/WEEK1/TEST/main.o
+ .bss           0x0080014c        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+ .bss           0x0080014c        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+ .bss           0x0080014c        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_divmodsi4.o)
+ .bss           0x0080014c        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .bss           0x0080014c        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+ .bss           0x0080014c        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .bss           0x0080014c        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o)
+ .bss           0x0080014c        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_addsub_sf.o)
+ .bss           0x0080014c        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mul_sf.o)
+ .bss           0x0080014c        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_gt_sf.o)
+ .bss           0x0080014c        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_ge_sf.o)
+ .bss           0x0080014c        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_lt_sf.o)
+ .bss           0x0080014c        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_sf_to_si.o)
+ .bss           0x0080014c        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_thenan_sf.o)
+ .bss           0x0080014c        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
+ .bss           0x0080014c        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
+ .bss           0x0080014c        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_pack_sf.o)
+ .bss           0x0080014c        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_unpack_sf.o)
+ .bss           0x0080014c        0x0 d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fpcmp_parts_sf.o)
  *(.bss*)
  .bss.TIMER0_pvCallBackFunc
-                0x00800080        0x2 ./MCAL/TIMERS/TIMER_program.o
+                0x0080014c        0x2 ./MCAL/TIMERS/TIMER_program.o
  .bss.EXTI_pvInt0Func
-                0x00800082        0x2 ./MCAL/EXTI/EXTI_program.o
-                0x00800082                EXTI_pvInt0Func
+                0x0080014e        0x2 ./MCAL/EXTI/EXTI_program.o
+                0x0080014e                EXTI_pvInt0Func
  .bss.EXTI_pvInt1Func
-                0x00800084        0x2 ./MCAL/EXTI/EXTI_program.o
-                0x00800084                EXTI_pvInt1Func
+                0x00800150        0x2 ./MCAL/EXTI/EXTI_program.o
+                0x00800150                EXTI_pvInt1Func
  .bss.EXTI_pvInt2Func
-                0x00800086        0x2 ./MCAL/EXTI/EXTI_program.o
-                0x00800086                EXTI_pvInt2Func
+                0x00800152        0x2 ./MCAL/EXTI/EXTI_program.o
+                0x00800152                EXTI_pvInt2Func
+ .bss.P1        0x00800154        0x1 ./APP/projects/PingPong/app.o
+                0x00800154                P1
+ .bss.P2        0x00800155        0x1 ./APP/projects/PingPong/app.o
+                0x00800155                P2
+ .bss.res1      0x00800156        0x1 ./APP/projects/PingPong/app.o
+                0x00800156                res1
+ .bss.res2      0x00800157        0x1 ./APP/projects/PingPong/app.o
+                0x00800157                res2
+ .bss.row_ball  0x00800158        0x1 ./APP/projects/PingPong/app.o
+                0x00800158                row_ball
  *(COMMON)
-                0x00800088                PROVIDE (__bss_end, .)
-                0x000020c8                __data_load_start = LOADADDR (.data)
-                0x000020e8                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00800159                PROVIDE (__bss_end, .)
+                0x00003ef4                __data_load_start = LOADADDR (.data)
+                0x00003fe0                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800088        0x0
-                0x00800088                PROVIDE (__noinit_start, .)
+.noinit         0x00800159        0x0
+                0x00800159                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x00800088                PROVIDE (__noinit_end, .)
-                0x00800088                _end = .
-                0x00800088                PROVIDE (__heap_start, .)
+                0x00800159                PROVIDE (__noinit_end, .)
+                0x00800159                _end = .
+                0x00800159                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -577,55 +682,59 @@ LOAD d:/nti/avr/tools/sdk_win_64/sdk_win_64/winavr/bin/../lib/gcc/avr/4.3.3/avr5
 .signature
  *(.signature*)
 
-.stab           0x00000000     0x3108
+.stab           0x00000000     0x5550
  *(.stab)
  .stab          0x00000000      0x2a0 ./MCAL/USART/USART_prog.o
  .stab          0x000002a0      0x330 ./MCAL/TIMERS/TIMER_program.o
                                 0x33c (size before relaxing)
- .stab          0x000005d0      0x1ec ./MCAL/PORT/PORT_program.o
+ .stab          0x000005d0      0x540 ./MCAL/SPI/SPI.o
+                                0x54c (size before relaxing)
+ .stab          0x00000b10      0x1ec ./MCAL/PORT/PORT_program.o
                                 0x1f8 (size before relaxing)
- .stab          0x000007bc      0x1c8 ./MCAL/GIE/GIE_program.o
+ .stab          0x00000cfc      0x324 ./MCAL/I2C/I2C.o
+                                0x4e0 (size before relaxing)
+ .stab          0x00001020      0x1c8 ./MCAL/GIE/GIE_program.o
                                 0x1d4 (size before relaxing)
- .stab          0x00000984      0x42c ./MCAL/EXTI/EXTI_program.o
+ .stab          0x000011e8      0x42c ./MCAL/EXTI/EXTI_program.o
                                 0x438 (size before relaxing)
- .stab          0x00000db0      0x66c ./MCAL/DIO/DIO_program.o
+ .stab          0x00001614      0x66c ./MCAL/DIO/DIO_program.o
                                 0x678 (size before relaxing)
- .stab          0x0000141c      0x24c ./MCAL/ADC/ADC_program.o
+ .stab          0x00001c80      0x24c ./MCAL/ADC/ADC_program.o
                                 0x258 (size before relaxing)
- .stab          0x00001668       0xd8 ./Hall/SWITCH/SWITCH_program.o
+ .stab          0x00001ecc       0xd8 ./Hall/SWITCH/SWITCH_program.o
                                  0xe4 (size before relaxing)
- .stab          0x00001740       0xd8 ./Hall/LED/LED_program.o
+ .stab          0x00001fa4       0xd8 ./Hall/LED/LED_program.o
                                  0xe4 (size before relaxing)
- .stab          0x00001818      0x474 ./Hall/KAYPAD/KPD_program.o
+ .stab          0x0000207c      0x2f4 ./Hall/KAYPAD/KPD_program.o
                                 0x480 (size before relaxing)
- .stab          0x00001c8c      0x1e0 ./Hall/DAC/DAC_program.o
+ .stab          0x00002370      0x1e0 ./Hall/DAC/DAC_program.o
                                 0x1ec (size before relaxing)
- .stab          0x00001e6c      0x8dc ./Hall/CLCD/CLCD_program.o
+ .stab          0x00002550      0x8dc ./Hall/CLCD/CLCD_program.o
                                 0xa74 (size before relaxing)
- .stab          0x00002748       0xd8 ./Hall/7_SEGMENT/_7SEGMENT_program.o
+ .stab          0x00002e2c       0xd8 ./Hall/7_SEGMENT/_7SEGMENT_program.o
                                  0xe4 (size before relaxing)
- .stab          0x00002820       0xd8 ./APP/projects/calc/calc.o
-                                 0xe4 (size before relaxing)
- .stab          0x000028f8       0xd8 ./APP/projects/calc/main.o
-                                 0xe4 (size before relaxing)
- .stab          0x000029d0       0xd8 ./APP/projects/PingPong/app.o
-                                 0xe4 (size before relaxing)
- .stab          0x00002aa8       0xd8 ./APP/projects/PingPong/main.o
-                                 0xe4 (size before relaxing)
- .stab          0x00002b80       0xd8 ./APP/WEEK2/TASK2/main.o
-                                 0xe4 (size before relaxing)
- .stab          0x00002c58       0xd8 ./APP/WEEK2/TASK1/main.o
-                                 0xe4 (size before relaxing)
- .stab          0x00002d30       0xd8 ./APP/WEEK1/snake/main.o
-                                 0xe4 (size before relaxing)
- .stab          0x00002e08       0xd8 ./APP/WEEK1/led/main.o
-                                 0xe4 (size before relaxing)
- .stab          0x00002ee0      0x228 ./APP/WEEK1/TEST/main.o
+ .stab          0x00002f04      0x51c ./APP/projects/calc/calc.o
+                                0x6b4 (size before relaxing)
+ .stab          0x00003420      0x438 ./APP/projects/calc/main.o
+                                0x654 (size before relaxing)
+ .stab          0x00003858      0xc60 ./APP/projects/PingPong/app.o
+                                0xdf8 (size before relaxing)
+ .stab          0x000044b8      0x168 ./APP/projects/PingPong/main.o
+                                0x1f8 (size before relaxing)
+ .stab          0x00004620      0x2c4 ./APP/WEEK2/TASK2/main.o
+                                0x45c (size before relaxing)
+ .stab          0x000048e4      0x2c4 ./APP/WEEK2/TASK1/main.o
+                                0x45c (size before relaxing)
+ .stab          0x00004ba8      0x3fc ./APP/WEEK1/snake/main.o
+                                0x594 (size before relaxing)
+ .stab          0x00004fa4      0x384 ./APP/WEEK1/led/main.o
+                                0x51c (size before relaxing)
+ .stab          0x00005328      0x228 ./APP/WEEK1/TEST/main.o
                                 0x3c0 (size before relaxing)
 
-.stabstr        0x00000000     0x135b
+.stabstr        0x00000000     0x1ac6
  *(.stabstr)
- .stabstr       0x00000000     0x135b ./MCAL/USART/USART_prog.o
+ .stabstr       0x00000000     0x1ac6 ./MCAL/USART/USART_prog.o
 
 .stab.excl
  *(.stab.excl)

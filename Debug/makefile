@@ -10,7 +10,9 @@ RM := rm -rf
 -include sources.mk
 -include MCAL/USART/subdir.mk
 -include MCAL/TIMERS/subdir.mk
+-include MCAL/SPI/subdir.mk
 -include MCAL/PORT/subdir.mk
+-include MCAL/I2C/subdir.mk
 -include MCAL/GIE/subdir.mk
 -include MCAL/EXTI/subdir.mk
 -include MCAL/DIO/subdir.mk
